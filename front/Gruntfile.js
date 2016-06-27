@@ -21,7 +21,7 @@ module.exports = function(grunt) {
                 separator: ';\n\n',
             },
             dist: {
-                src: ['bower_components/angular/angular.min.js','bower_components/tether/dist/js/tether.min.js','bower_components/jquery/dist/jquery.min.js','bower_components/bootstrap/dist/js/bootstrap.min.js','src/main/javascript/*.js','src/main/javascript/components/*.js'],
+                src: ['bower_components/angular/angular.min.js','bower_components/tether/dist/js/tether.min.js','bower_components/jquery/dist/jquery.min.js','src/main/javascript/*.js','src/main/javascript/components/*.js'],
                 dest: 'target/classes/dist/spc.js'
             },
         },
