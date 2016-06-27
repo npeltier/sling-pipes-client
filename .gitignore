@@ -1,0 +1,8 @@
+target
+front/bower_components
+front/node_modules
+front/node
+.idea
+*.log
+*.iml
+.DS_Store
