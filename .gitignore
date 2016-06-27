@@ -3,6 +3,10 @@ front/bower_components
 front/node_modules
 front/node
 .idea
+.classpath
+.metadata
+.settings
+.project
 *.log
 *.iml
 .DS_Store
