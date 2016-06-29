@@ -1,0 +1,93 @@
+{
+  "jcr:primaryType":"nt:unstructured",
+  "2015": {
+    "jcr:primaryType":"nt:unstructured",
+    "01":{
+      "jcr:primaryType":"sling:OrderedFolder",
+      "01":{
+        "jcr:primaryType":"sling:OrderedFolder",
+        "02":{
+          "1": { "sling:resourceType":"slingPipes/base"}
+        },
+        "03":{
+          "2": { "sling:resourceType":"slingPipes/base"}
+        }
+      },
+      "23":{
+        "jcr:primaryType":"sling:OrderedFolder",
+        "02":{
+          "3": { "sling:resourceType":"slingPipes/base"}
+        },
+        "03":{
+          "4": { "sling:resourceType":"slingPipes/base"}
+        }
+      }
+    },
+    "12":{
+      "jcr:primaryType":"sling:OrderedFolder",
+      "22":{
+        "jcr:primaryType":"sling:OrderedFolder",
+        "02":{
+          "5": { "sling:resourceType":"slingPipes/base"}
+        },
+        "03":{
+          "6": { "sling:resourceType":"slingPipes/base"}
+        }
+      },
+      "31":{
+        "jcr:primaryType":"sling:OrderedFolder",
+        "02":{
+          "7": { "sling:resourceType":"slingPipes/base"}
+        },
+        "03":{
+          "8": { "sling:resourceType":"slingPipes/base"}
+        }
+      }
+    }
+  },
+  "2016": {
+    "jcr:primaryType":"nt:unstructured",
+    "04":{
+      "jcr:primaryType":"sling:OrderedFolder",
+      "22":{
+        "jcr:primaryType":"sling:OrderedFolder",
+        "02":{
+          "9": { "sling:resourceType":"slingPipes/base"}
+        },
+        "03":{
+          "10": { "sling:resourceType":"slingPipes/base"}
+        }
+      },
+      "23":{
+        "jcr:primaryType":"sling:OrderedFolder",
+        "02":{
+          "11": { "sling:resourceType":"slingPipes/base"}
+        },
+        "03":{
+          "12": { "sling:resourceType":"slingPipes/base"}
+        }
+      }
+    },
+    "06":{
+      "jcr:primaryType":"sling:OrderedFolder",
+      "22":{
+        "jcr:primaryType":"sling:OrderedFolder",
+        "02":{
+          "13": { "sling:resourceType":"slingPipes/base"}
+        },
+        "03":{
+          "14": { "sling:resourceType":"slingPipes/base"}
+        }
+      },
+      "23":{
+        "jcr:primaryType":"sling:OrderedFolder",
+        "02":{
+          "15": { "sling:resourceType":"slingPipes/base"}
+        },
+        "03":{
+          "16": { "sling:resourceType":"slingPipes/base"}
+        }
+      }
+    }
+  }
+}
