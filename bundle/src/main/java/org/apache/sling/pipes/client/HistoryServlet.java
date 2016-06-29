@@ -17,10 +17,10 @@ import org.slf4j.LoggerFactory;
 import javax.servlet.ServletException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
-import java.util.*;
-import static org.apache.sling.pipes.client.PipeClientConstants.HISTORY_ROOT;
 
 /**
  * write last pipes in the repository under history, assuming that they are sorted in a structure like
@@ -48,16 +48,16 @@ public class HistoryServlet extends SlingSafeMethodsServlet {
             response.setContentType("application/json");
             ResourceResolver resolver = request.getResourceResolver();
             JSONWriter writer = new JSONWriter(response.getWriter());
-            writeHistory(resolver, writer);
+            writeHistory(request, writer);
         } catch (Exception e){
             logger.error("unable to retrieve history", e);
             throw new ServletException(e);
         }
     }
 
-    protected void writeHistory(ResourceResolver resolver, JSONWriter writer) throws JSONException {
+    protected void writeHistory(SlingHttpServletRequest request, JSONWriter writer) throws JSONException {
         writer.array();
-        for (Resource resource : retrievePipeHistory(resolver)){
+        for (Resource resource : retrievePipeHistory(request.getResource())){
             logger.debug("adding resource {} to the history", resource.getPath());
             writer.object();
             writer.key("name").value(resource.getName());
@@ -69,11 +69,11 @@ public class HistoryServlet extends SlingSafeMethodsServlet {
 
     /**
      * retrieves a list of pipes in invert chronological order, with a max of PIPE_MAX elements
-     * @param resolver
+     * @param resource
      * @return
      */
-    protected List<Resource> retrievePipeHistory(ResourceResolver resolver) {
-        return retrieveResourcePipeHistory(resolver.getResource(HISTORY_ROOT));
+    protected List<Resource> retrievePipeHistory(Resource resource) {
+        return retrieveResourcePipeHistory(resource);
     }
 
     private List<Resource> retrieveResourcePipeHistory(Resource resource) {

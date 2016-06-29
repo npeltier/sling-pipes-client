@@ -6,7 +6,7 @@ angular.module('pipesApp').
             '</ul>',
 		controller:function historyController($http){
               var self = this;
-              $http.get('/etc/pipes/history.json').then(function(response) {
+              $http.get('/etc/sling/pipes/history.json').then(function(response) {
                 self.pipes = response.data;
               });
 		}
