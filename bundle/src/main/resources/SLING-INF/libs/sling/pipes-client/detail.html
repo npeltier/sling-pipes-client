@@ -1,0 +1,6 @@
+<div class="panel-heading">
+    <h3 class="panel-title">${properties['jcr:title']||resource.name}</h3>
+</div>
+<ul data-sly-use.use="org.apache.sling.pipes.client.DetailUse" data-sly-list.subpipe="${use.subpipes}">
+    <li>type: ${subpipe["sling:resourceType"]}</li>
+</ul>

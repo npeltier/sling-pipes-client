@@ -7,11 +7,7 @@
 	</li>
 </ul>
 <div class="tab-content">
-	<div role="tabpanel" class="tab-pane active" id="history">
-		<history-list></history-list>
-	</div>
-	<div role="tabpanel" class="tab-pane" id="library">
-		<book-list></book-list>
-	</div>
+	<div role="tabpanel" class="tab-pane active" id="history" data-sly-resource="${'/etc/sling/pipes/history'}"></div>
+	<div role="tabpanel" class="tab-pane" id="library"  data-sly-resource="${'/etc/sling/pipes/library'}"></div>
 </div>
 

@@ -1,0 +1,7 @@
+<ul class="nav nav-sidebar" data-sly-use.use="org.apache.sling.pipes.client.HistoryUse">
+    <li data-sly-repeat.pipe="${use.history}">
+        <a class="active" href="${pipe.path}.html">
+            ${pipe.name}
+        </a>
+    </li>
+</ul>

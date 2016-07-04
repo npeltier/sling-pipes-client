@@ -59,6 +59,14 @@
                 <artifactId>maven-sling-plugin</artifactId>
                 <version>2.1.0</version>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <dependencies>
@@ -126,6 +134,12 @@
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
             <version>3.2.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.scripting.sightly</artifactId>
+            <version>1.0.2</version>
             <scope>provided</scope>
         </dependency>
         <!-- testing dependencies -->

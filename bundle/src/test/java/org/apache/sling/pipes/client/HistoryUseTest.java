@@ -12,9 +12,9 @@ import static org.junit.Assert.*;
 /**
  * testing history servlet algorithms
  */
-public class HistoryServletTest extends AbstractPipeClientTest {
+public class HistoryUseTest extends AbstractPipeClientTest {
 
-    HistoryServlet servlet;
+    HistoryUse use;
 
     public static final String TEST_PATH = "/content/test";
 
@@ -22,14 +22,14 @@ public class HistoryServletTest extends AbstractPipeClientTest {
     public void setup() {
         PlumberImpl plumberImpl = new PlumberImpl();
         plumberImpl.activate();
-        servlet = new HistoryServlet();
-        servlet.plumber = plumberImpl;
+        use = new HistoryUse();
+        use.plumber = plumberImpl;
         context.load().json("/history.json", TEST_PATH);
     }
 
     @Test
     public void testRetrievePipeHistory() {
-        List<Resource> resources = servlet.retrievePipeHistory(context.resourceResolver().getResource(TEST_PATH));
+        List<Resource> resources = use.retrievePipeHistory(context.resourceResolver().getResource(TEST_PATH));
         int expectedNumber = 16;
         assertNotNull("returned list should not be null", resources);
         assertEquals ("there should be exactly " + expectedNumber + " elements", expectedNumber, resources.size());
@@ -41,7 +41,7 @@ public class HistoryServletTest extends AbstractPipeClientTest {
 
     @Test
     public void testIsPipe() {
-        assertFalse("history node is not a pipe", servlet.isPipe(context.resourceResolver().getResource(TEST_PATH)));
-        assertTrue("this node should be a pipe", servlet.isPipe(context.resourceResolver().getResource(TEST_PATH + "/2016/06/23/03/16")));
+        assertFalse("history node is not a pipe", use.isPipe(context.resourceResolver().getResource(TEST_PATH)));
+        assertTrue("this node should be a pipe", use.isPipe(context.resourceResolver().getResource(TEST_PATH + "/2016/06/23/03/16")));
     }
 }

@@ -1,4 +1,4 @@
 {
   "jcr:primaryType":"sling:Folder",
-  "sling:resourceType":"pipes/client/history"
+  "sling:resourceType":"sling/pipes-client/history"
 }
