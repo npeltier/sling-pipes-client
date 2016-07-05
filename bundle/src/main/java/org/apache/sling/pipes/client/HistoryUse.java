@@ -2,9 +2,7 @@ package org.apache.sling.pipes.client;
 
 import org.apache.commons.collections.IteratorUtils;
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.scripting.SlingScriptHelper;
-import org.apache.sling.pipes.Pipe;
-import org.apache.sling.pipes.Plumber;
+import org.apache.sling.pipes.ContainerPipe;
 import org.apache.sling.scripting.sightly.pojo.Use;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,8 +23,6 @@ public class HistoryUse implements Use {
 
     List<Resource> history;
 
-    Plumber plumber;
-
     private static final Comparator<Resource> RESOURCE_COMPARATOR = (o1, o2) -> {
         return -1 * o1.getName().compareTo(o2.getName());
     };
@@ -36,7 +32,6 @@ public class HistoryUse implements Use {
     }
 
     public void init(Bindings bindings) {
-        plumber = ((SlingScriptHelper)bindings.get("sling")).getService(Plumber.class);
         history = retrievePipeHistory((Resource)bindings.get("resource"));
     }
 
@@ -71,7 +66,6 @@ public class HistoryUse implements Use {
      * @return
      */
     protected boolean isPipe(Resource resource){
-        Pipe pipe = plumber.getPipe(resource);
-        return pipe != null;
+        return resource.isResourceType(ContainerPipe.RESOURCE_TYPE);
     }
 }

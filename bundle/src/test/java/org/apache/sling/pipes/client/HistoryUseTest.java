@@ -1,7 +1,6 @@
 package org.apache.sling.pipes.client;
 
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.pipes.impl.PlumberImpl;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,10 +19,7 @@ public class HistoryUseTest extends AbstractPipeClientTest {
 
     @Before
     public void setup() {
-        PlumberImpl plumberImpl = new PlumberImpl();
-        plumberImpl.activate();
         use = new HistoryUse();
-        use.plumber = plumberImpl;
         context.load().json("/history.json", TEST_PATH);
     }
 
