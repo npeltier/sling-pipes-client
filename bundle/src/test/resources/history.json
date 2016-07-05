@@ -7,19 +7,19 @@
       "01":{
         "jcr:primaryType":"sling:OrderedFolder",
         "02":{
-          "1": { "sling:resourceType":"slingPipes/base"}
+          "1": { "sling:resourceType":"slingPipes/container"}
         },
         "03":{
-          "2": { "sling:resourceType":"slingPipes/base"}
+          "2": { "sling:resourceType":"slingPipes/container"}
         }
       },
       "23":{
         "jcr:primaryType":"sling:OrderedFolder",
         "02":{
-          "3": { "sling:resourceType":"slingPipes/base"}
+          "3": { "sling:resourceType":"slingPipes/container"}
         },
         "03":{
-          "4": { "sling:resourceType":"slingPipes/base"}
+          "4": { "sling:resourceType":"slingPipes/container"}
         }
       }
     },
@@ -28,19 +28,19 @@
       "22":{
         "jcr:primaryType":"sling:OrderedFolder",
         "02":{
-          "5": { "sling:resourceType":"slingPipes/base"}
+          "5": { "sling:resourceType":"slingPipes/container"}
         },
         "03":{
-          "6": { "sling:resourceType":"slingPipes/base"}
+          "6": { "sling:resourceType":"slingPipes/container"}
         }
       },
       "31":{
         "jcr:primaryType":"sling:OrderedFolder",
         "02":{
-          "7": { "sling:resourceType":"slingPipes/base"}
+          "7": { "sling:resourceType":"slingPipes/container"}
         },
         "03":{
-          "8": { "sling:resourceType":"slingPipes/base"}
+          "8": { "sling:resourceType":"slingPipes/container"}
         }
       }
     }
@@ -52,19 +52,19 @@
       "22":{
         "jcr:primaryType":"sling:OrderedFolder",
         "02":{
-          "9": { "sling:resourceType":"slingPipes/base"}
+          "9": { "sling:resourceType":"slingPipes/container"}
         },
         "03":{
-          "10": { "sling:resourceType":"slingPipes/base"}
+          "10": { "sling:resourceType":"slingPipes/container"}
         }
       },
       "23":{
         "jcr:primaryType":"sling:OrderedFolder",
         "02":{
-          "11": { "sling:resourceType":"slingPipes/base"}
+          "11": { "sling:resourceType":"slingPipes/container"}
         },
         "03":{
-          "12": { "sling:resourceType":"slingPipes/base"}
+          "12": { "sling:resourceType":"slingPipes/container"}
         }
       }
     },
@@ -73,19 +73,19 @@
       "22":{
         "jcr:primaryType":"sling:OrderedFolder",
         "02":{
-          "13": { "sling:resourceType":"slingPipes/base"}
+          "13": { "sling:resourceType":"slingPipes/container"}
         },
         "03":{
-          "14": { "sling:resourceType":"slingPipes/base"}
+          "14": { "sling:resourceType":"slingPipes/container"}
         }
       },
       "23":{
         "jcr:primaryType":"sling:OrderedFolder",
         "02":{
-          "15": { "sling:resourceType":"slingPipes/base"}
+          "15": { "sling:resourceType":"slingPipes/container"}
         },
         "03":{
-          "16": { "sling:resourceType":"slingPipes/base"}
+          "16": { "sling:resourceType":"slingPipes/container"}
         }
       }
     }
