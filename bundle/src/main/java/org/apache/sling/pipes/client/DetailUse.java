@@ -19,13 +19,15 @@ public class DetailUse implements Use {
     @Override
     public void init(Bindings bindings) {
         subpipes = new ArrayList<>();
-        Resource parent = ((Resource)bindings.get("resource")).getChild("conf");
-        for (Iterator<Resource> it = parent.listChildren(); it.hasNext(); ){
+        Resource parent = ((Resource) bindings.get("resource")).getChild("conf");
+        for (Iterator<Resource> it = parent.listChildren(); it.hasNext(); ) {
             subpipes.add(it.next().adaptTo(ValueMap.class));
         }
     }
 
     public List<ValueMap> getSubpipes() {
+
         return subpipes;
     }
+
 }
