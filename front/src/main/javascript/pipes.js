@@ -14,6 +14,17 @@ Pipes = {
 
 $(document).ready(function(){
     $.getJSON(Pipes.retrievePipePath() + ".json").then(Pipes.handleResults);
+    $('.execute').click(function(){
+      $.ajax({
+         url: Pipes.retrievePipePath() + ".json",
+         type:'post',
+         dataType:'json',
+         success: function (data) {
+                      Pipes.handleResults(data);
+                       console.log("end");
+                  }
+              });
+        });
 });
 
 
