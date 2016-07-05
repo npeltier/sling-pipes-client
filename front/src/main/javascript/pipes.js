@@ -1,12 +1,19 @@
-$(document).ready(function(){
-    var self=this,
-        path = document.location.pathname,
-        pipe = path.substring(0, path.indexOf(".html")) + ".json",
-        list = $(".results ul");
-    $.getJSON(pipe).then(function(data){
+Pipes = {
+    handleResults : function(data) {
+        var list = $(".results ul");
         $(".results span.total").text(data.size);
         $.each(data.items, function(idx, item){
             $("<li/>").addClass("list-group-item").text(item).appendTo(list);
         });
-    });
+    },
+    retrievePipePath : function() {
+        path = document.location.pathname;
+        return path.substring(0, path.indexOf(".html"));
+    }
+};
+
+$(document).ready(function(){
+    $.getJSON(Pipes.retrievePipePath() + ".json").then(Pipes.handleResults);
 });
+
+

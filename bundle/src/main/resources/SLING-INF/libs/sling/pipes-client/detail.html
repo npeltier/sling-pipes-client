@@ -1,6 +1,10 @@
 <div class="panel-heading">
     <h3 class="panel-title">${properties['jcr:title']||resource.name}</h3>
 </div>
-<ul data-sly-use.use="org.apache.sling.pipes.client.DetailUse" data-sly-list.subpipe="${use.subpipes}">
-    <li>type: ${subpipe["sling:resourceType"]}</li>
-</ul>
+
+<div data-sly-use.use="org.apache.sling.pipes.client.DetailUse" data-sly-repeat.subpipe="${use.subpipes}" class="subpipe">
+    <span>name : ${subpipe["jcr:primaryType"]}</span><br>
+    <span>type: ${subpipe["sling:resourceType"]}</span><br>
+    <span>expr: ${subpipe["expr"]}</span><br>
+    <span>path: ${subpipe["path"]}</span><br>
+</div>
