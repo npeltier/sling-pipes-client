@@ -9,15 +9,18 @@ Pipes = {
     retrievePipePath : function() {
         path = document.location.pathname;
         return path.substring(0, path.indexOf(".html"));
+    },
+    emptyResultsList : function(data) {
+            $( ".list-group-item" ).remove();
+
     }
-    /*resourcePath:function(){
-    return $('.edithpath');
-    }*/
 };
 
 $(document).ready(function(){
     $.getJSON(Pipes.retrievePipePath() + ".json").then(Pipes.handleResults);
+
     $('.execute').click(function(){
+    $.getJSON(Pipes.retrievePipePath() + ".json").then(Pipes.emptyResultsList);
       $.ajax({
          url: Pipes.retrievePipePath() + ".json",
          type:'post',
@@ -41,7 +44,6 @@ $(document).ready(function(){
                              console.log("ok");
                    }
          });
-                    /* console.log( Pipes.resourcePath());*/
     });
 });
 
