@@ -9,13 +9,18 @@ Pipes = {
     retrievePipePath : function() {
         path = document.location.pathname;
         return path.substring(0, path.indexOf(".html"));
-    }
+    },
+    emptyResultsList : function(data) {
+            $( ".list-group-item" ).remove();
 
+    }
 };
 
 $(document).ready(function(){
     $.getJSON(Pipes.retrievePipePath() + ".json").then(Pipes.handleResults);
+
     $('.execute').click(function(){
+    $.getJSON(Pipes.retrievePipePath() + ".json").then(Pipes.emptyResultsList);
       $.ajax({
          url: Pipes.retrievePipePath() + ".json",
          type:'post',
@@ -23,8 +28,8 @@ $(document).ready(function(){
          success: function (data) {
                     Pipes.handleResults(data);
                   }
+              });
        });
-    });
     $('.edit').on('focusout',function(){
         var path =$(this).parents(".subpipe").data("path"),
             property = $(this).data("property"),
@@ -37,9 +42,8 @@ $(document).ready(function(){
                  data: data,
                  success: function () {
                              console.log("ok");
-                 }
-        });
-
+                   }
+         });
     });
 });
 
