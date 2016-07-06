@@ -23,8 +23,8 @@ $(document).ready(function(){
          success: function (data) {
                     Pipes.handleResults(data);
                   }
-              });
        });
+    });
     $('.edit').on('focusout',function(){
         var path =$(this).parents(".subpipe").data("path"),
             property = $(this).data("property"),
@@ -37,8 +37,8 @@ $(document).ready(function(){
                  data: data,
                  success: function () {
                              console.log("ok");
-                   }
-         });
+                 }
+        });
 
     });
 });
