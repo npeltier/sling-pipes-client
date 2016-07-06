@@ -10,9 +10,7 @@ Pipes = {
         path = document.location.pathname;
         return path.substring(0, path.indexOf(".html"));
     }
-    /*resourcePath:function(){
-    return $('.edithpath');
-    }*/
+
 };
 
 $(document).ready(function(){
@@ -41,7 +39,7 @@ $(document).ready(function(){
                              console.log("ok");
                    }
          });
-                    /* console.log( Pipes.resourcePath());*/
+
     });
 });
 
