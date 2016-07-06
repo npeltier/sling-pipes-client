@@ -14,18 +14,18 @@ import java.util.List;
  */
 public class DetailUse implements Use {
 
-    List<ValueMap> subpipes;
+    List<Resource> subpipes;
 
     @Override
     public void init(Bindings bindings) {
         subpipes = new ArrayList<>();
         Resource parent = ((Resource) bindings.get("resource")).getChild("conf");
         for (Iterator<Resource> it = parent.listChildren(); it.hasNext(); ) {
-            subpipes.add(it.next().adaptTo(ValueMap.class));
+            subpipes.add(it.next());
         }
     }
 
-    public List<ValueMap> getSubpipes() {
+    public List<Resource> getSubpipes() {
 
         return subpipes;
     }
