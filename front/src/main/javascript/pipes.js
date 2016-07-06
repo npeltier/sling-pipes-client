@@ -10,6 +10,9 @@ Pipes = {
         path = document.location.pathname;
         return path.substring(0, path.indexOf(".html"));
     }
+    /*resourcePath:function(){
+    return $('.edithpath');
+    }*/
 };
 
 $(document).ready(function(){
@@ -20,11 +23,26 @@ $(document).ready(function(){
          type:'post',
          dataType:'json',
          success: function (data) {
-                      Pipes.handleResults(data);
-                       console.log("end");
+                    Pipes.handleResults(data);
                   }
               });
-        });
+       });
+    $('.edit').on('focusout',function(){
+        var path =$(this).parents(".subpipe").data("path"),
+            property = $(this).data("property"),
+            value = $(this).text(),
+            data = {};
+        data[property] = value;
+        $.ajax({
+                 url: path,
+                 type:'post',
+                 data: data,
+                 success: function () {
+                             console.log("ok");
+                   }
+         });
+                    /* console.log( Pipes.resourcePath());*/
+    });
 });
 
 
