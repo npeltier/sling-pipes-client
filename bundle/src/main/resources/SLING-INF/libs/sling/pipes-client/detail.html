@@ -3,7 +3,5 @@
 </div>
 
 <div data-sly-use.use="org.apache.sling.pipes.client.DetailUse" data-sly-list.subpipe="${use.subpipes}" class="pipecontainer">
-    <div class="subpipe" data-path="${subpipe.resource.path}" data-sly-resource="${subpipe.path @ resourceType='sling/pipes-client/subpipe'}"></div>
-    <a id="pipeAdd" href="#"><span  class="glyphicon glyphicon-plus-sign"></span></a>
+    <div class="subpipe" data-path="${subpipe.path}" data-sly-resource="${subpipe.path @ resourceType='sling/pipes-client/subpipe'}"></div>
 </div>
-
