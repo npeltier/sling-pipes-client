@@ -26,28 +26,6 @@ public class DetailUse implements Use {
     }
 
     public List<Resource> getSubpipes() {
-
         return subpipes;
     }
-
-    public class Detail {
-        Resource resource;
-        Resource previous;
-        Resource next;
-
-        public Resource getResource() {
-            return resource;
-        }
-
-        public Resource getPrevious() {
-            return previous;
-        }
-
-        public Resource getNext() {
-            return next;
-        }
-        public void orderFromCurrent(){
-        }
-    }
-
 }

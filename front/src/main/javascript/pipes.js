@@ -44,19 +44,4 @@ $(document).ready(function(){
                }
         });
     });
-
-    $('.pipeAdd').click(function(){
-            var current=$(this).parents(".subpipe").data("path"),
-                precedent=$(this).parents(".subpipe").siblings().next(data("path")
-    });
-
-    $('.chvL').clik(function(){
-
-    });
-
-    $('.chvR').clik(function(){
-
-    });
 });
-
-
