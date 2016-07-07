@@ -2,26 +2,32 @@
 
 .detail {
   width: 95%;
-  height: 30%;
+  height:30%;
   display: inline_block;
 }
 
-.subpipe {
-  display: inline-block;
+.pipecontainer {
+  min-height: 20rem;
+  display: inline-flex;
+  width: 100%;
+  overflow-x:scroll;
 }
 
 .subpipe {
   text-align: center;
   float: left;
+  min-width: 22rem;
   margin-left: 5%;
-  width: 25%;
-  height: 30%;
+  width: 22rem;
+  height: 14rem;
   position: relative;
   background: #88b7d5;
   border: 10px solid #c2e1f5;
+  margin-top: 3rem;
+  display: inline-block;
 }
 
-.subpipe:after, .arrow_box:before {
+.subpipe:after, .arrow_box:before{
   left: 100%;
   top: 50%;
   border: solid transparent;
@@ -51,14 +57,16 @@
 }
 
 .results {
-  margin-left: 17%;
-  width: 75%;
+  width:100%;
   display: inline-block;
 }
 
 .input-group {
-  width: 85%;
+  width: 106.1rem;
   float: right;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
 }
 
 .input-group-btn {

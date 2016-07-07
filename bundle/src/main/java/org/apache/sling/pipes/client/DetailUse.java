@@ -26,8 +26,6 @@ public class DetailUse implements Use {
     }
 
     public List<Resource> getSubpipes() {
-
         return subpipes;
     }
-
 }
