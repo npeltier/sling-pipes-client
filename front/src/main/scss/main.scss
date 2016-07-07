@@ -8,10 +8,10 @@
 }
 
 .pipecontainer{
-    min-height: 20rem;
-    display: inline-flex;
-    width: 100%;
-    overflow:scroll;
+  min-height: 20rem;
+  display: inline-flex;
+  width: 100%;
+  overflow:scroll;
 }
 
 .subpipe {
@@ -64,7 +64,7 @@
 }
 
 .input-group {
-  width: 105.9rem;
+  width: 106.1rem;
   float: right;
   padding-right: 1rem;
   padding-bottom: 1rem;
@@ -86,4 +86,20 @@
 
 .btn-danger {
   float: right;
+}
+#pipeAdd{
+  float:right;
+  height:2rem;
+  padding-top: 1.5rem;
+  color: #3cbd7d;
+}
+.chv{
+ height:2rem;
+ color:#4653e6;
+}
+.chvL{
+ float:left;
+}
+.chvR{
+ float:right;
 }
