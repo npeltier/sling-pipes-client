@@ -6,12 +6,19 @@
   display: inline_block;
 }
 
-.pipecontainer {
+.subPipecontainer {
   min-height: 20rem;
+  max-height: 20rem;
   display: inline-flex;
   width: 100%;
-  overflow-x:scroll;
 }
+
+.pipecontainer {
+  display: inherit;
+  overflow-x: scroll;
+  width: 100%;
+}
+
 
 .subpipe {
   text-align: center;
@@ -19,11 +26,12 @@
   min-width: 22rem;
   margin-left: 5%;
   width: 22rem;
-  height: 14rem;
+  height: 16rem;
   position: relative;
   background: #88b7d5;
   border: 10px solid #c2e1f5;
-  margin-top: 3rem;
+  margin-top: auto;
+  margin-bottom:auto;
   display: inline-block;
 }
 
@@ -78,10 +86,41 @@
 .panel-heading {
 }
 
-.panelResults_Top {
-  height: 3%;
-}
-
 .btn-danger {
   float: right;
+}
+
+.chv {
+  margin: 0.3rem;
+  background-color: transparent;
+  border: none;
+  color: #1e7f99;
+  float: left;
+  margin-inline-end: auto;
+  margin-right: 1rem;
+}
+
+
+
+.plus:hover {
+  text-decoration:none;
+}
+
+.plus {
+  height: 3rem;
+  width: 3.5rem;
+  font-size: 3rem;
+  margin-top: 8.2rem;
+  background-color: transparent;
+  color: #45c272;
+  border: none;
+  margin-right: 0.7rem;
+}
+
+[contenteditable=true]:empty:before {
+  content: attr(placeholder);
+  
+}
+.execute{
+margin-top:-3.2rem;
 }

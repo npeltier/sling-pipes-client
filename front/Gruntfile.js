@@ -21,7 +21,7 @@ module.exports = function(grunt) {
                 separator: ';\n\n',
             },
             dist: {
-                src: ['bower_components/jquery/dist/jquery.min.js','src/main/javascript/*.js'],
+                src: ['bower_components/jquery/dist/jquery.min.js','src/main/javascript/pipes.js','src/main/javascript/handlers/*.js'],
                 dest: 'target/classes/dist/spc.js'
             },
         },
