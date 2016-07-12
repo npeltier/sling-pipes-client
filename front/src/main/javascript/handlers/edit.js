@@ -54,3 +54,15 @@ $('.saveSubPipe').click (function(){
         }
     });
 });
+
+$('.bttRemove').click(function(){
+    var current=$(this).parents('.subpipe').data("path");
+    $.ajax({
+        url:current,
+        type:'post',
+        data:{":operation":"delete"},
+        success: function(){
+            location.reload();
+        }
+    });
+})
