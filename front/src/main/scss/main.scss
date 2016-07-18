@@ -121,15 +121,51 @@
   content: attr(placeholder);
   
 }
-.execute{
-margin-top:-3.2rem;
+.execute {
+  margin-top:-3.2rem;
 }
 
-.bttRemove{
+.bttRemove {
   margin: 0.3rem;
   float: right;
   color: #e94747;
   background-color: transparent;
   border: none;
   margin-inline-end: auto;
+}
+.modal-body {
+  height: 15rem;
+}
+
+.select {
+
+  margin-top: 1.8rem;
+  padding-left: 1rem;
+}
+
+.coll {
+  margin-top:3.5rem;
+  float:left;
+  display:table-cell;
+  vertical-align:middle;
+  width:2rem;
+}
+.coll button {
+  display:table;
+  text-indent:1em;
+  white-space:nowrap;
+  transform:rotate(90deg) translate( -50%,0);
+  transform-origin:0.6em center;
+}
+.collapse1 {
+  display:none;
+}
+
+#sideButton {
+  clear:none;
+  display:block;
+}
+
+.sel2{
+  background-color: transparent;
 }

@@ -3,6 +3,11 @@
 <button  class="glyphicon glyphicon-chevron-right chv chvR"></button>
 <br>
 <span>name:${resource.name}</span><br>
-<span>type:<span contenteditable="true" class="edit" data-property="sling:resourceType" placeholder="Empty">${properties["sling:resourceType"]}</span></span><br>
+<span>type:<span contenteditable="true"  class="selType" data-property="sling:resourceType" placeholder="Empty">${properties["sling:resourceType"]}</span>
+   <select class="selectpicker sel2" data-sly-use.mapping="org.apache.sling.pipes.client.MappingUse" data-sly-list.option="${mapping.children}">
+      <sly data-property="sling:resourceType" data-sly-resource="${option.path}"></sly>
+   </select>
+</span><br>
+
 <span>expr:<span contenteditable="true" class="edit" data-property="expr" placeholder="Empty">${properties["expr"]}</span></span><br>
 <span>path:<span contenteditable="true" class="edit" data-property="path" placeholder="Empty">${properties["path"]}</span></span><br>

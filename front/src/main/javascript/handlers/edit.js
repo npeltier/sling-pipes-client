@@ -9,8 +9,31 @@ $('.edit').on('focusout',function(){
          type:'post',
          data: data,
          success: function(){
+         console.log("ok");
            }
     });
+});
+
+$('.selType').on('focusin',function(){
+    $(this).parents('.subpipe').children('span').eq(1).children('.selType').hide();
+    $(this).parents('.subpipe').children('span').eq(1).children('.sel2').show();
+});
+
+$('select').on('change',function(){
+  console.log("okbeggin");
+    var path =$(this).parents(".subpipe").data("path"),
+            property = $(this).parents('.subpipe').children('span').eq(1).children('.selType').data("property"),
+            value = $(this).val(),
+            data = {};
+        data[property] = value;
+        $.ajax({
+             url: path,
+             type:'post',
+             data: data,
+             success: function(){
+                location.reload();
+               }
+        });
 });
 
 $('.chvL').click(function(){
@@ -43,7 +66,7 @@ $('.chvR').click(function(){
 
 $('.saveSubPipe').click (function(){
    var inputN=$('#inputName').val();
-   var inputT=$('#inputType').val();
+   var inputT=$('#sel').val();
    path=document.location.pathname.substring(0, path.indexOf(".html"));
     $.ajax({
         url:path+"/conf/"+inputN,

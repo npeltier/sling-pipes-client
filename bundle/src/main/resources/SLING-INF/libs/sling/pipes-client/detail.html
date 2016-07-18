@@ -2,9 +2,9 @@
     <h3 class="panel-title">${properties['jcr:title']||resource.name}</h3>
 </div>
 <div class="subPipecontainer">
-<div data-sly-use.use="org.apache.sling.pipes.client.DetailUse" data-sly-list.subpipe="${use.subpipes}" class="pipecontainer">
-    <div class="subpipe" data-path="${subpipe.path}" data-sly-resource="${subpipe.path @ resourceType='sling/pipes-client/subpipe'}"></div>
-</div>
+    <div data-sly-use.use="org.apache.sling.pipes.client.DetailUse" data-sly-list.subpipe="${use.subpipes}" class="pipecontainer">
+        <div class="subpipe" data-path="${subpipe.path}" data-sly-resource="${subpipe.path @ resourceType='sling/pipes-client/subpipe'}"></div>
+    </div>
     <button class="glyphicon glyphicon-plus-sign plus" data-toggle="modal" data-target="#popup"></button>
 </div>
 
@@ -16,16 +16,15 @@
                 <h4 class="modal-title" id="myModalLabel">Edit New Subpipe</h4>
             </div>
             <form class="editSubpipe" method="post" action="http://localhost:4502/etc/sling/pipes/library/2012/autre/conf/testcreate">
-            <div class="modal-body">
-                <label  class="col-sm-2 control-label" for="inputName">Name</label>
-                <input id="inputName" type="name" class="form-control" placeholder="Edit Name"/>
-                <label  class="col-sm-2 control-label" for="inputType">Type</label>
-                <input id="inputType" type="sling:resourceType" class="form-control" placeholder=" Edit Type"/><br>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary saveSubPipe" data-dismiss="modal">Save Subpipe</button>
-            </div>
+                <div class="modal-body">
+                    <label  class="col-sm-2 control-label" for="inputName">Name</label>
+                    <input id="inputName" type="name" class="form-control" placeholder="Edit Name"/>
+                    <div class='select' data-sly-include="select.html"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary saveSubPipe" data-dismiss="modal">Save Subpipe</button>
+                </div>
             </form>
         </div>
     </div>
