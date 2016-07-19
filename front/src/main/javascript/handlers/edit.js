@@ -25,7 +25,8 @@ $('.typeSelect').on('focusout',function(){
     $(this).parents('.subpipe').children('span').eq(1).children('div').children(".typeSelect").hide();
 });
 
-$('select #inTypeSelect').on('change',function(){
+$("select#inTypeSelect").on('change',function(){
+    console.log('on');
     var path =$(this).parents(".subpipe").data("path"),
             property = $(this).parents('.subpipe').children('span').eq(1).children('.typeInput').data("property"),
             value = $(this).val(),
