@@ -14,15 +14,20 @@ $('.edit').on('focusout',function(){
     });
 });
 
-$('.selType').on('focusin',function(){
-    $(this).parents('.subpipe').children('span').eq(1).children('.selType').hide();
-    $(this).parents('.subpipe').children('span').eq(1).children('.sel2').show();
+$('.typeInput').on('focusin',function(){
+    $(this).parents('.subpipe').children('span').eq(1).children('.typeInput').hide();
+    $(this).parents('.subpipe').children('span').eq(1).children('div').children(".typeSelect").show();
+    $(this).parents('.subpipe').children('span').eq(1).children('div').children(".typeSelect").focus();
 });
 
-$('select').on('change',function(){
-  console.log("okbeggin");
+$('.typeSelect').on('focusout',function(){
+    $(this).parents('.subpipe').children('span').eq(1).children('.typeInput').show();
+    $(this).parents('.subpipe').children('span').eq(1).children('div').children(".typeSelect").hide();
+});
+
+$('select #inTypeSelect').on('change',function(){
     var path =$(this).parents(".subpipe").data("path"),
-            property = $(this).parents('.subpipe').children('span').eq(1).children('.selType').data("property"),
+            property = $(this).parents('.subpipe').children('span').eq(1).children('.typeInput').data("property"),
             value = $(this).val(),
             data = {};
         data[property] = value;
@@ -66,14 +71,14 @@ $('.chvR').click(function(){
 
 $('.saveSubPipe').click (function(){
    var inputN=$('#inputName').val();
-   var inputT=$('#sel').val();
+   var inputT=$('#select').val();
    path=document.location.pathname.substring(0, path.indexOf(".html"));
     $.ajax({
         url:path+"/conf/"+inputN,
         type: 'post',
         data:{"sling:resourceType":inputT},
         success: function(){
-            location.reload();
+           location.reload();
         }
     });
 });

@@ -19,7 +19,8 @@
                 <div class="modal-body">
                     <label  class="col-sm-2 control-label" for="inputName">Name</label>
                     <input id="inputName" type="name" class="form-control" placeholder="Edit Name"/>
-                    <div class='select' data-sly-include="select.html"></div>
+                    <label for="selecter">Type :</label>
+                    <div data-sly-use.select="select.html" data-sly-call="${select.selectpick @ id='select' ,clazz='selectpicker'}"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

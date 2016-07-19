@@ -17,7 +17,7 @@ Pipes = {
 
 $(document).ready(function(){
     $.getJSON(Pipes.retrievePipePath() + ".json").then(Pipes.handleResults);
-    $('#sel').val('slingPipes/base');
-    $('.sel2').hide();
+    $('#select').val('slingPipes/base');
+    $('.typeSelect').hide();
 });
 
