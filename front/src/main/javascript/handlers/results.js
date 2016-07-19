@@ -5,7 +5,7 @@ Pipes.emptyResultsList();
      type:'post',
      dataType:'json',
      success: function (data) {
-                Pipes.handleResults(data);
-              }
+         Pipes.handleResults(data);
+     }
   });
 });

@@ -3,7 +3,6 @@ package org.apache.sling.pipes.client;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.scripting.sightly.pojo.Use;
-
 import javax.script.Bindings;
 import java.util.ArrayList;
 import java.util.Iterator;

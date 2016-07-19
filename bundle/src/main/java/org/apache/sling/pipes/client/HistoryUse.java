@@ -17,7 +17,7 @@ import java.util.List;
  * use for getting a sorted history of pipes from a tree
  */
 public class HistoryUse implements Use {
-    Logger logger = LoggerFactory.getLogger(this.getClass());
+    private static Logger logger = LoggerFactory.getLogger(HistoryUse.class);
 
     private static final short PIPE_MAX = 20;
 
