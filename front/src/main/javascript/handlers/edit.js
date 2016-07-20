@@ -9,7 +9,6 @@ $('.edit').on('focusout',function(){
          type:'post',
          data: data,
          success: function(){
-         console.log("ok");
            }
     });
 });

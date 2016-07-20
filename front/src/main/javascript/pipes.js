@@ -19,5 +19,10 @@ $(document).ready(function(){
     $.getJSON(Pipes.retrievePipePath() + ".json").then(Pipes.handleResults);
     $('#select').val('slingPipes/base');
     $('.typeSelect').hide();
+    $( ".divselector" ).each(function() {
+        var value=$(this).parents('.subpipe').children('span').eq(1).children('.typeInput').text();
+        $(this).children().val(value);
+    });
 });
+
 
