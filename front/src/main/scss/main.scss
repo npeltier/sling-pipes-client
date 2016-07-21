@@ -70,14 +70,20 @@
 }
 
 .input-group {
- float: right;
- padding-right: 0.3rem;
- padding-bottom: 1rem;
- padding-top: 1rem;
+  width: 106.1rem;
+  float: right;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
 }
 
-.inputFieldCrea {
-  width: 95rem;
+.input-group-btn {
+}
+
+.form-control {
+}
+
+.panel-heading {
 }
 
 .btn-danger {
@@ -93,6 +99,8 @@
   margin-inline-end: auto;
   margin-right: 1rem;
 }
+
+
 
 .plus:hover {
   text-decoration:none;
@@ -111,7 +119,7 @@
 
 [contenteditable=true]:empty:before {
   content: attr(placeholder);
-
+  
 }
 .execute {
   margin-top:-3.2rem;
@@ -130,36 +138,46 @@
 }
 
 .select {
+
   margin-top: 1.8rem;
   padding-left: 1rem;
 }
 
 .coll {
- margin-top: 5.35rem;
- float: left;
- margin-right: 3rem;
- margin-left: 0.6rem;
+  margin-top:3.5rem;
+  float:left;
+  display:table-cell;
+  vertical-align:middle;
+  width:2rem;
 }
-
 .coll button {
-  width: 2rem;
-  height: 3rem;
-  padding-bottom: 0.2rem;
-  text-indent: -0.5rem;
+  display:table;
+  text-indent:1em;
+  white-space:nowrap;
+  transform:rotate(90deg) translate( -50%,0);
+  transform-origin:0.6em center;
+}
+.collapse1 {
+  display:none;
 }
 
-.typeSelect {
+#sideButton {
+  clear:none;
+  display:block;
+}
+
+.typeSelect{
   background-color: transparent;
+  heigth:16px;
 }
-
-.divselector {
-  display:inline-block;
+.divselector{
+    display:inline-block;
 }
 
 .glyphicon-option-vertical {
   padding-bottom:0.5rem;
 }
 
-.btnS {
+.btnS{
   padding-bottom: 0.56rem;
 }
