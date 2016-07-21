@@ -70,14 +70,20 @@
 }
 
 .input-group {
- float: right;
- padding-right: 0.3rem;
- padding-bottom: 1rem;
- padding-top: 1rem;
+  width: 106.1rem;
+  float: right;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
 }
 
-.inputFieldCrea {
-  width: 95rem;
+.input-group-btn {
+}
+
+.form-control {
+}
+
+.panel-heading {
 }
 
 .btn-danger {
@@ -130,6 +136,7 @@
 }
 
 .select {
+
   margin-top: 1.8rem;
   padding-left: 1rem;
 }
@@ -160,6 +167,8 @@
   padding-bottom:0.5rem;
 }
 
-.btnS {
+.btnS{
   padding-bottom: 0.56rem;
 }
+
+
