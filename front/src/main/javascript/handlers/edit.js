@@ -9,10 +9,26 @@ $('.edit').on('focusout',function(){
          type:'post',
          data: data,
          success: function(){
-         console.log("ok");
            }
     });
 });
+
+$('.editName').on('focusout',function(){
+    var path = $(this).parents(".subpipe").data("path"),
+    pathRepertory=path.substring(0,path.lastIndexOf("/")),
+    value=$(this).text();
+    $.ajax({
+      url : path,
+      type:'post',
+      data: {':operation':'move',
+             ':replace': 'true',
+             ':dest': pathRepertory +"/"+ value},
+             success: function(){
+                location.reload();
+             }
+    })
+})
+
 
 $('.typeInput').on('focusin',function(){
     $(this).parents('.subpipe').children('span').eq(1).children('.typeInput').hide();
@@ -37,7 +53,7 @@ $("select#inTypeSelect").on('change',function(){
              type:'post',
              data: data,
              success: function(){
-                location.reload();
+                  location.reload();
                }
         });
 });

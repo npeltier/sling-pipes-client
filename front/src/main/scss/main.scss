@@ -1,5 +1,6 @@
 @import '../../../bower_components/bootstrap/dist/css/bootstrap.min.css';
 
+
 .detail {
   width: 95%;
   height:30%;
@@ -100,8 +101,6 @@
   margin-right: 1rem;
 }
 
-
-
 .plus:hover {
   text-decoration:none;
 }
@@ -119,7 +118,7 @@
 
 [contenteditable=true]:empty:before {
   content: attr(placeholder);
-  
+
 }
 .execute {
   margin-top:-3.2rem;
@@ -163,6 +162,14 @@
 
 .divselector {
   display:inline-block;
+}
+
+.glyphicon-option-vertical {
+  padding-bottom:0.5rem;
+}
+
+.btnS {
+  padding-bottom: 0.56rem;
 }
 
 .glyphicon-option-vertical {

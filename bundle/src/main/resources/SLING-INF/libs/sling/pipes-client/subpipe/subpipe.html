@@ -2,7 +2,7 @@
 <button  class="glyphicon glyphicon-chevron-left chv chvL"></button>
 <button  class="glyphicon glyphicon-chevron-right chv chvR"></button>
 <br>
-<span>name:${resource.name}</span><br>
+<span>name:<span contenteditable="true" class="editName" >${resource.name}</span></span><br>
 <span>type:<span contenteditable="true"  class="typeInput" data-property="sling:resourceType" placeholder="Empty">${properties["sling:resourceType"]}</span>
 <div class="divselector" data-sly-use.selectInline="/libs/sling/pipes-client/select.html" data-sly-call="${selectInline.selectpick @ id='inTypeSelect' ,clazz='typeSelect'}"></div>
 </span><br>
