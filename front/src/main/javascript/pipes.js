@@ -19,8 +19,6 @@ $(document).ready(function() {
     $.getJSON(Pipes.retrievePipePath() + ".json").then(Pipes.handleResults);
     $('#select').val('slingPipes/base');
     $('.typeSelect').hide();
-    $.getJSON(Pipes.retrievePipePath() + ".json").then(Pipes.handleResults);
-    $(".collapse").hide();
     $("#sideButton").click(function () {
        $(".collapse").toggle();
     });
