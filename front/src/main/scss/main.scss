@@ -1,5 +1,6 @@
 @import '../../../bower_components/bootstrap/dist/css/bootstrap.min.css';
 
+
 .detail {
   width: 95%;
   height:30%;
@@ -100,8 +101,6 @@
   margin-right: 1rem;
 }
 
-
-
 .plus:hover {
   text-decoration:none;
 }
@@ -119,7 +118,7 @@
 
 [contenteditable=true]:empty:before {
   content: attr(placeholder);
-  
+
 }
 .execute {
   margin-top:-3.2rem;
@@ -144,34 +143,33 @@
 }
 
 .coll {
-  margin-top:3.5rem;
-  float:left;
-  display:table-cell;
-  vertical-align:middle;
-  width:2rem;
+ margin-top: 5.35rem;
+ float: left;
+ margin-right: 3rem;
+ margin-left: 0.6rem;
 }
+
 .coll button {
-  display:table;
-  text-indent:1em;
-  white-space:nowrap;
-  transform:rotate(90deg) translate( -50%,0);
-  transform-origin:0.6em center;
-}
-.collapse1 {
-  display:none;
+  width: 2rem;
+  height: 3rem;
+  padding-bottom: 0.2rem;
+  text-indent: -0.5rem;
 }
 
-#sideButton {
-  clear:none;
-  display:block;
-}
-
-.typeSelect{
+.typeSelect {
   background-color: transparent;
-  heigth:16px;
 }
-.divselector{
-    display:inline-block;
+
+.divselector {
+  display:inline-block;
+}
+
+.glyphicon-option-vertical {
+  padding-bottom:0.5rem;
+}
+
+.btnS {
+  padding-bottom: 0.56rem;
 }
 
 .glyphicon-option-vertical {
