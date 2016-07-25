@@ -15,10 +15,16 @@ Pipes = {
     }
 };
 
-$(document).ready(function() {
+$(document).ready(function(){
     $.getJSON(Pipes.retrievePipePath() + ".json").then(Pipes.handleResults);
     $('#select').val('slingPipes/base');
     $('.typeSelect').hide();
+    $( ".divselector" ).each(function() {
+        var value=$(this).parents('.subpipe').children('span').eq(1).children('.typeInput').text();
+        $(this).children().val(value);
+    });
+    $.getJSON(Pipes.retrievePipePath() + ".json").then(Pipes.handleResults);
+    $(".collapse").hide();
     $("#sideButton").click(function () {
        $(".collapse").toggle();
     });
