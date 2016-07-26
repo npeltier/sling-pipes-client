@@ -1,6 +1,5 @@
 target
 front/bower_components
-front/node_modules
 front/node
 .idea
 .classpath
@@ -10,3 +9,6 @@ front/node
 *.log
 *.iml
 .DS_Store
+_SpecRunner.html
+front/.grunt/
+node_modules
