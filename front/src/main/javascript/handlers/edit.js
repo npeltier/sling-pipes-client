@@ -26,8 +26,8 @@ $('.editName').on('focusout',function(){
              success: function(){
                 location.reload();
              }
-    })
-})
+    });
+});
 
 
 $('.typeInput').on('focusin',function(){
@@ -110,4 +110,4 @@ $('.bttRemove').click(function(){
             location.reload();
         }
     });
-})
+});
