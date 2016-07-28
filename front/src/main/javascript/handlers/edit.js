@@ -23,7 +23,7 @@ $('.editName').on('focusout',function(){
       data: {':operation':'move',
              ':replace': 'true',
              ':dest': pathRepertory +"/"+ value},
-             success: function(){
+      success: function(){
                 location.reload();
              }
     });
@@ -53,7 +53,7 @@ $("select#inTypeSelect").on('change',function(){
              type:'post',
              data: data,
              success: function(){
-                  location.reload();
+                 location.reload();
                }
         });
 });

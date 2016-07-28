@@ -1,0 +1,16 @@
+{
+  "jcr:primaryType":"nt:unstructured",
+  "Basepipe":{
+    "jcr:primaryType":"nt:unstructured",
+    "sling:resourceType":"sling/pipes-client/mapping",
+    "pipeType":"slingPipes/base",
+    "name":"Base"
+  },
+  "$": {
+    "jcr:primaryType":"nt:unstructured",
+    "sling:resourceType":"sling/pipes-client/mapping",
+    "pipeType":"slingPipes/slingQuery",
+    "name":"SlingQuery",
+    "args":["path","expr"]
+  }
+}
