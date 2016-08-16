@@ -64,14 +64,12 @@ Pipes.Creation = {
 $('.create').click(function(){
      var date= new Date(),
      mapping=$(".inputFieldCrea").data("mapping"),
-     today= ('0'+date.getDate()).slice(-2)+'-' +('0'+(date.getMonth()+1)).slice(-2)+'-'+date.getFullYear(),
-     current=location.pathname,
-     pathRepertory = current.substring(0,current.lastIndexOf("/"))+('/'),
+     today= date.getFullYear()+'-'+('0'+(date.getMonth()+1)).slice(-2)+'-'+('0'+date.getDate()).slice(-2)+'_'+('0'+date.getHours()).slice(-2)+'-'+('0'+date.getMinutes()).slice(-2),
      input = $('.inputFieldCrea').val(),
      data = Pipes.Creation.buildJson(input,mapping),
      dataString=JSON.stringify(data);
      $.ajax({
-        url : pathRepertory,
+        url : "http://localhost:4502/etc/sling/pipes/history/"+date.getFullYear()+'/'+('0'+(date.getMonth()+1)).slice(-2),
         type :'post',
         data :{":operation":"import",
                ":contentType":"json",
