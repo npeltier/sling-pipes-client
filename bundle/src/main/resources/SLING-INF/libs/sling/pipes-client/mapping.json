@@ -61,11 +61,12 @@
     "pipeType":"slingPipes/reference",
     "name":"Reference"
   },
-  "WriterPipe":{
+  "write":{
     "jcr:primaryType":"nt:unstructured",
     "sling:resourceType":"sling/pipes-client/mapping",
     "pipeType":"slingPipes/write",
-    "name":"Writer"
+    "name":"Writer",
+    "args":["conf"]
   },
   "Move":{
     "jcr:primaryType":"nt:unstructured",

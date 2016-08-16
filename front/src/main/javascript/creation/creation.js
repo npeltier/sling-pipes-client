@@ -34,6 +34,8 @@ Pipes.Creation = {
     "parseSubCommand" : function (subCommands,mapping){
         var tokens = subCommands.split(/[\s]* /gi),
               sub = tokens[0],
+              argsOfTokens,
+              write,
               mappedConf = mapping[sub];
         if (mappedConf) {
             var conf = {
@@ -42,8 +44,16 @@ Pipes.Creation = {
             };
             if (mappedConf.args) {
               $.each(mappedConf.args, function(index, arg) {
-                if (index  < tokens.length-1)
-                         conf[arg] = tokens[index+1];
+                if (index  < tokens.length-1){
+                        if (arg==="conf"){
+                         argsOfTokens=tokens[index+1].split(/[=]/gi);
+                         write={
+                         "jcr:primaryType":"nt:unstructured"};
+                         write[argsOfTokens[0]]=argsOfTokens[1];
+                         conf[arg]=write;
+                          }else
+                            conf[arg] = tokens[index+1];
+                         }
               });
             }
             return conf;
