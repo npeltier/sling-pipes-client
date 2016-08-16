@@ -70,7 +70,6 @@ var mapping = {
   });
 
   it("buildJson should convert a command into corresponding container pipe configuration",function(){
-
     expect(Pipes.Creation.buildJson("$  /content/foo  cq:Page | rm",mapping)).toEqual({
         "jcr:primaryType":"nt:unstructured",
         "sling:resourceType":"slingPipes/container",
