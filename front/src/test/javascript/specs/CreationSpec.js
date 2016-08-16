@@ -19,7 +19,14 @@ var mapping = {
       "sling:resourceType":"sling/pipes-client/mapping",
       "pipeType":"slingPipes/base",
       "name":"base"
-      }
+      },
+      "write":{
+          "jcr:primaryType":"nt:unstructured",
+          "sling:resourceType":"sling/pipes-client/mapping",
+          "pipeType":"slingPipes/write",
+          "name":"Write",
+          "args":["conf"]
+        }
     };
 
   it("parseCommand should parse a command and return a list of subpipes", function() {
@@ -52,13 +59,23 @@ var mapping = {
         "jcr:primaryType":"nt:unstructured",
          "sling:resourceType":"slingPipes/base"
     });
+    expect(Pipes.Creation.parseSubCommand("write sling:resourceType=blah",mapping)).toEqual({
+          "jcr:primaryType":"nt:unstructured",
+                           "sling:resourceType":"slingPipes/write",
+                           "conf":{
+                                "jcr:primaryType":"nt:unstructured",
+                                "sling:resourceType":"blah"
+                           }
+    });
   });
 
   it("buildJson should convert a command into corresponding container pipe configuration",function(){
+
     expect(Pipes.Creation.buildJson("$  /content/foo  cq:Page | rm",mapping)).toEqual({
         "jcr:primaryType":"nt:unstructured",
         "sling:resourceType":"slingPipes/container",
-        "conf":{"jcr:primaryType":"sling:OrderedFolder",
+        "conf":{
+            "jcr:primaryType":"sling:OrderedFolder",
             "$":{
                  "jcr:primaryType":"nt:unstructured",
                  "sling:resourceType":"slingPipes/slingQuery",
@@ -74,7 +91,8 @@ var mapping = {
     expect(Pipes.Creation.buildJson("$  /content/foo" ,mapping)).toEqual({
             "jcr:primaryType":"nt:unstructured",
             "sling:resourceType":"slingPipes/container",
-            "conf":{"jcr:primaryType":"sling:OrderedFolder",
+            "conf":{
+                "jcr:primaryType":"sling:OrderedFolder",
                 "$":{
                      "jcr:primaryType":"nt:unstructured",
                      "sling:resourceType":"slingPipes/slingQuery",
@@ -83,5 +101,51 @@ var mapping = {
             }
         });
   });
+
+   it("buildJson should convert a simple write command into corresponding writer configuration",function(){
+
+        expect(Pipes.Creation.buildJson("$ /content/foo cq:Page | write sling:resourceType=blah",mapping)).toEqual({
+          "jcr:primaryType":"nt:unstructured",
+          "sling:resourceType":"slingPipes/container",
+          "conf":{
+              "jcr:primaryType":"sling:OrderedFolder",
+              "$":{
+                   "jcr:primaryType":"nt:unstructured",
+                   "sling:resourceType":"slingPipes/slingQuery",
+                   "path":"/content/foo",
+                   "expr":"cq:Page"
+              },
+              "write":{
+                   "jcr:primaryType":"nt:unstructured",
+                   "sling:resourceType":"slingPipes/write",
+                   "conf":{
+                        "jcr:primaryType":"nt:unstructured",
+                        "sling:resourceType":"blah"
+                   }
+              }
+          }
+      });
+      expect(Pipes.Creation.buildJson(" $ /content/test cq:Page | write sling:resourceType=test2",mapping)).toEqual({
+         "jcr:primaryType":"nt:unstructured",
+                  "sling:resourceType":"slingPipes/container",
+                  "conf":{
+                      "jcr:primaryType":"sling:OrderedFolder",
+                      "$":{
+                           "jcr:primaryType":"nt:unstructured",
+                           "sling:resourceType":"slingPipes/slingQuery",
+                           "path":"/content/test",
+                           "expr":"cq:Page"
+                      },
+                      "write":{
+                           "jcr:primaryType":"nt:unstructured",
+                           "sling:resourceType":"slingPipes/write",
+                           "conf":{
+                                "jcr:primaryType":"nt:unstructured",
+                                "sling:resourceType":"test2"
+                           }
+                      }
+                  }
+      });
+   });
 
 });
