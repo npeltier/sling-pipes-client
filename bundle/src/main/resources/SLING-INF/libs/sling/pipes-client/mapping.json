@@ -6,11 +6,12 @@
     "pipeType":"slingPipes/base",
     "name":"Base"
   },
-  "SlingQuery Pipe":{
+  "$":{
     "jcr:primaryType":"nt:unstructured",
     "sling:resourceType":"sling/pipes-client/mapping",
     "pipeType":"slingPipes/slingQuery",
-    "name":"SlingQuery"
+    "name":"SlingQuery",
+    "args":["path","expr"]
   },
   "JsonPipe": {
     "jcr:primaryType": "nt:unstructured",
@@ -72,11 +73,12 @@
     "pipeType":"slingPipes/mv",
     "name":"Move"
   },
-  "Remove":{
+  "rm":{
     "jcr:primaryType":"nt:unstructured",
     "sling:resourceType":"sling/pipes-client/mapping",
     "pipeType":"slingPipes/rm",
-    "name":"Remove"
+    "name":"Remove",
+    "args":["path"]
   },
   "Path":{
     "jcr:primaryType":"nt:unstructured",
