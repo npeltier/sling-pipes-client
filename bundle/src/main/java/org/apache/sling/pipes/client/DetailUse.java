@@ -1,7 +1,7 @@
 package org.apache.sling.pipes.client;
 
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ValueMap;
+import org.apache.sling.pipes.ContainerPipe;
 import org.apache.sling.scripting.sightly.pojo.Use;
 import javax.script.Bindings;
 import java.util.ArrayList;
@@ -15,16 +15,26 @@ public class DetailUse implements Use {
 
     List<Resource> subpipes;
 
+    boolean isPipe = false;
+
     @Override
     public void init(Bindings bindings) {
         subpipes = new ArrayList<>();
-        Resource parent = ((Resource) bindings.get("resource")).getChild("conf");
-        for (Iterator<Resource> it = parent.listChildren(); it.hasNext(); ) {
-            subpipes.add(it.next());
+        Resource resource = ((Resource) bindings.get("resource"));
+        isPipe = resource.isResourceType(ContainerPipe.RESOURCE_TYPE);
+        if (isPipe){
+            Resource parent = resource.getChild("conf");
+            for (Iterator<Resource> it = parent.listChildren(); it.hasNext(); ) {
+                subpipes.add(it.next());
+            }
         }
     }
 
     public List<Resource> getSubpipes() {
         return subpipes;
+    }
+
+    public boolean isPipe() {
+        return isPipe;
     }
 }

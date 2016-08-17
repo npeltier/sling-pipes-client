@@ -43,11 +43,12 @@
     "pipeType":"slingPipes/parent",
     "name":"Parent"
   },
-  "FilterPipe":{
+  "grep":{
     "jcr:primaryType":"nt:unstructured",
     "sling:resourceType":"sling/pipes-client/mapping",
     "pipeType":"slingPipes/filter",
-    "name":"Filter"
+    "name":"Filter",
+    "args":["conf"]
   },
   "ContainerPipe":{
     "jcr:primaryType":"nt:unstructured",

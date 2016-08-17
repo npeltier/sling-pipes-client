@@ -2,9 +2,11 @@ Pipes = {
     handleResults : function(data) {
         var list = $(".results ul");
         $(".results span.total").text(data.size);
-        $.each(data.items, function(idx, item){
-            $("<li/>").addClass("list-group-item").text(item).appendTo(list);
-        });
+        if (data.items){
+            $.each(data.items, function(idx, item){
+                $("<li/>").addClass("list-group-item").text(item).appendTo(list);
+            });
+        }
     },
     retrievePipePath : function() {
         path = document.location.pathname;
@@ -20,7 +22,7 @@ $(document).ready(function(){
     $('#select').val('slingPipes/base');
     $('.typeSelect').hide();
     $( ".divselector" ).each(function() {
-        var value=$(this).parents('.subpipe').children('span').eq(1).children('.typeInput').text();
+        var value=$(this).prev().text();
         $(this).children().val(value);
     });
     $.getJSON(Pipes.retrievePipePath() + ".json").then(Pipes.handleResults);
