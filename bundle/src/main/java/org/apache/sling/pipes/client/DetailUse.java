@@ -21,7 +21,8 @@ public class DetailUse implements Use {
     public void init(Bindings bindings) {
         subpipes = new ArrayList<>();
         Resource resource = ((Resource) bindings.get("resource"));
-        if (resource.isResourceType(ContainerPipe.RESOURCE_TYPE)){
+        isPipe = resource.isResourceType(ContainerPipe.RESOURCE_TYPE);
+        if (isPipe){
             Resource parent = resource.getChild("conf");
             for (Iterator<Resource> it = parent.listChildren(); it.hasNext(); ) {
                 subpipes.add(it.next());
