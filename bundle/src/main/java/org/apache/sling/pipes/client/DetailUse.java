@@ -1,6 +1,8 @@
 package org.apache.sling.pipes.client;
 
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.scripting.SlingBindings;
+import org.apache.sling.pipes.BasePipe;
 import org.apache.sling.pipes.ContainerPipe;
 import org.apache.sling.scripting.sightly.pojo.Use;
 import javax.script.Bindings;
@@ -20,10 +22,10 @@ public class DetailUse implements Use {
     @Override
     public void init(Bindings bindings) {
         subpipes = new ArrayList<>();
-        Resource resource = ((Resource) bindings.get("resource"));
+        Resource resource = ((Resource) bindings.get(SlingBindings.RESOURCE));
         isPipe = resource.isResourceType(ContainerPipe.RESOURCE_TYPE);
         if (isPipe){
-            Resource parent = resource.getChild("conf");
+            Resource parent = resource.getChild(BasePipe.NN_CONF);
             for (Iterator<Resource> it = parent.listChildren(); it.hasNext(); ) {
                 subpipes.add(it.next());
             }
