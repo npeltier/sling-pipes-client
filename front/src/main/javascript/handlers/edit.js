@@ -99,7 +99,7 @@ $('.saveSubPipe').click (function(){
     });
 });
 
-$('.bttRemove').click(function(){
+$('.remove').click(function(){
     var current=$(this).next().data("path");
     $.ajax({
         url:current,

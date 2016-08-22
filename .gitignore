@@ -12,3 +12,4 @@ front/node
 _SpecRunner.html
 front/.grunt/
 node_modules
+tmp_init

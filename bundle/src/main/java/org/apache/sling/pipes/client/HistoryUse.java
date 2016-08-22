@@ -3,11 +3,7 @@ package org.apache.sling.pipes.client;
 import org.apache.commons.collections.IteratorUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.pipes.ContainerPipe;
-import org.apache.sling.scripting.sightly.pojo.Use;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import javax.script.Bindings;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -16,23 +12,17 @@ import java.util.List;
 /**
  * use for getting a sorted history of pipes from a tree
  */
-public class HistoryUse implements Use {
-    private static Logger logger = LoggerFactory.getLogger(HistoryUse.class);
-
-    private static final short PIPE_MAX = 20;
-
+public class HistoryUse extends AbstractUse {
     List<Resource> history;
 
-    private static final Comparator<Resource> RESOURCE_COMPARATOR = (o1, o2) -> {
-        return -1 * o1.getName().compareTo(o2.getName());
-    };
+    private static final Comparator<Resource> RESOURCE_COMPARATOR = (o1, o2) -> -1 * o1.getName().compareTo(o2.getName());
 
     public List<Resource> getHistory() {
         return history;
     }
 
-    public void init(Bindings bindings) {
-        history = retrievePipeHistory((Resource)bindings.get("resource"));
+    public void activate() {
+        history = retrievePipeHistory(getResource());
     }
 
     /**
