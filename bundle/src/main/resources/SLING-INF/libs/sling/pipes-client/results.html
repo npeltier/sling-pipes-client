@@ -1,7 +1,7 @@
 <!-- Default panel contents -->
-<div class="panel-heading" id="panelResults_Top">
+<div data-sly-use.use="org.apache.sling.pipes.client.PipeUse" class="panel-heading" id="panelResults_Top">
     <p>Results</p>
-
+    <button type="button" class="btn json-edit" data-path="${resource.path}/writer">Columns</button>
     <button type="button" class="btn btn-danger execute" >Execute</button>
 
 <div class="total_list">
