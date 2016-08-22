@@ -1,6 +1,7 @@
 package org.apache.sling.pipes.client;
 
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.pipes.ContainerPipe;
 import org.apache.sling.api.scripting.SlingBindings;
 import org.apache.sling.pipes.BasePipe;
 import org.apache.sling.pipes.ContainerPipe;

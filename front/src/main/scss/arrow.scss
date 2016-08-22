@@ -1,0 +1,29 @@
+$arrowheight: 2rem;
+$arrowwidth: 19rem / 2;
+
+.subpipe:before,.subpipe:after{
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-width: $arrowheight $arrowwidth 0 $arrowwidth;
+}
+
+.subpipe:before {
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+  margin-left:-10rem;
+  z-index: 0;
+}
+
+.subpipe:after{
+  top: 100%;
+  left: 50%;
+  border-color: rgba(28, 82, 117, 0);
+  border-top-color: #88b7d5;
+  margin-left: -9.48rem;
+  top: 21rem;
+  z-index: 1;
+}

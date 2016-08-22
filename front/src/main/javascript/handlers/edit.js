@@ -31,20 +31,19 @@ $('.editName').on('focusout',function(){
 
 
 $('.typeInput').on('focusin',function(){
-    $(this).parents('.subpipe').children('span').eq(1).children('.typeInput').hide();
-    $(this).parents('.subpipe').children('span').eq(1).children('div').children(".typeSelect").show();
-    $(this).parents('.subpipe').children('span').eq(1).children('div').children(".typeSelect").focus();
+    $(this).hide();
+    $(this).next().children().show();
+    $(this).next().children().focus();
 });
 
 $('.typeSelect').on('focusout',function(){
-    $(this).parents('.subpipe').children('span').eq(1).children('.typeInput').show();
-    $(this).parents('.subpipe').children('span').eq(1).children('div').children(".typeSelect").hide();
+    $(this).parent().prev().show();
+    $(this).hide();
 });
 
 $("select#inTypeSelect").on('change',function(){
-    console.log('on');
-    var path =$(this).parents(".subpipe").data("path"),
-            property = $(this).parents('.subpipe').children('span').eq(1).children('.typeInput').data("property"),
+    var path =$(this).parents('.subpipeContent').data('path'),
+            property = $(this).parent().prev().data("property"),
             value = $(this).val(),
             data = {};
         data[property] = value;
@@ -58,31 +57,31 @@ $("select#inTypeSelect").on('change',function(){
         });
 });
 
-$('.chvL').click(function(){
-    var current=$(this).parents('.subpipe').data("path"),
-     prev=$(this).parents(".subpipe").prev().data("path"),
-     prevName=prev.substring(prev.lastIndexOf("/")+1);
+$('.chevronUp').click(function(){
+    var current=$(this).parent().children('.subpipeContent').data('path'),
+        prev=$(this).parent().prev().children('.subpipeContent').data('path'),
+        prevName=prev.substring(prev.lastIndexOf("/")+1);
     $.ajax({
         url: current,
         type:'post',
         data: {":order":"before "+prevName},
         success: function(){
-             location.reload();
+                location.reload();
         }
     });
 });
 
-$('.chvR').click(function(){
-    var current=$(this).parents('.subpipe').data("path"),
-         next=$(this).parents(".subpipe").next().data("path"),
-         nextName=next.substring(next.lastIndexOf("/")+1);
-        $.ajax({
-            url: current,
-            type:'post',
-            data: {":order":"after "+nextName},
-            success: function(){
-                 location.reload();
-            }
+$('.chevronDown').click(function(){
+    var current=$(this).parent().children('.subpipeContent').data('path'),
+        next=$(this).parent().next().children('.subpipeContent').data("path"),
+        nextName=next.substring(next.lastIndexOf("/")+1);
+    $.ajax({
+        url: current,
+        type:'post',
+        data: {":order":"after "+nextName},
+        success: function(){
+                location.reload();
+        }
         });
   });
 
@@ -95,19 +94,19 @@ $('.saveSubPipe').click (function(){
         type: 'post',
         data:{"sling:resourceType":inputT},
         success: function(){
-           location.reload();
+                location.reload();
         }
     });
 });
 
 $('.bttRemove').click(function(){
-    var current=$(this).parents('.subpipe').data("path");
+    var current=$(this).next().data("path");
     $.ajax({
         url:current,
         type:'post',
         data:{":operation":"delete"},
         success: function(){
-            location.reload();
+                location.reload();
         }
     });
 });

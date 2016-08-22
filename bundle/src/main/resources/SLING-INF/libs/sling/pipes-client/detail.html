@@ -1,13 +1,19 @@
 <div class="panel-heading">
     <h3 class="panel-title">${properties['jcr:title']||resource.name}</h3>
 </div>
-<div class="subPipecontainer">
-    <div data-sly-use.use="org.apache.sling.pipes.client.DetailUse" data-sly-list.subpipe="${use.subpipes}" class="pipecontainer">
-        <div class="subpipe" data-path="${subpipe.path}" data-sly-resource="${subpipe.path @ resourceType='sling/pipes-client/subpipe'}"></div>
+<div class="panelOfSubpipes">
+    <div class="subPipecontainer">
+        <div data-sly-use.use="org.apache.sling.pipes.client.DetailUse" data-sly-list.subpipe="${use.subpipes}" class="pipecontainer">
+            <div class="subpipe">
+                <button  class="glyphicon glyphicon-chevron-up chevron chevronUp"></button>
+                <button  class="glyphicon glyphicon-remove  remove"></button>
+                <div  class="subpipeContent" data-path="${subpipe.path}" data-sly-resource="${subpipe.path @ resourceType='sling/pipes-client/subpipe'}"></div>
+                <button  class="glyphicon glyphicon-chevron-down chevron chevronDown"></button>
+            </div>
+        </div>
     </div>
     <button data-sly-test="${use.pipe}" class="glyphicon glyphicon-plus-sign plus" data-toggle="modal" data-target="#popup"></button>
 </div>
-
 <div class="modal fade" id="popup" tabindex="-1" role="dialog" aria-labelledby="Edit_subPipe">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

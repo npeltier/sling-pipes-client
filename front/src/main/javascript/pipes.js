@@ -22,7 +22,7 @@ $(document).ready(function(){
     $('#select').val('slingPipes/base');
     $('.typeSelect').hide();
     $( ".divselector" ).each(function() {
-        var value=$(this).parents('.subpipe').children('span').eq(1).children('.typeInput').text();
+        var value=$(this).prev().text();
         $(this).children().val(value);
     });
     $.getJSON(Pipes.retrievePipePath() + ".json").then(Pipes.handleResults);
