@@ -23,6 +23,8 @@ Pipes = {
                 ':operation':'import',
                 ':contentType':'json',
                 ':name':name,
+                ':replace':true,
+                ':replaceProperties':true,
                 ':content':JSON.stringify(json)
             },
             success : handler
