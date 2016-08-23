@@ -1,37 +1,38 @@
 package org.apache.sling.pipes.client;
 
 import org.apache.commons.collections.IteratorUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
-import org.apache.sling.commons.json.JSONArray;
 import org.apache.sling.commons.json.JSONException;
 import org.apache.sling.commons.json.JSONObject;
-import org.apache.sling.scripting.sightly.pojo.Use;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.sling.pipes.BasePipe;
+import org.apache.sling.pipes.Pipe;
 
-import javax.script.Bindings;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-public class MappingUse implements Use {
-    private static Logger logger = LoggerFactory.getLogger(MappingUse.class);
+public class MappingUse extends AbstractUse {
+
+    public static final String PN_TYPE = "pipeType";
+
+    public static final String PN_ARGS = "args";
 
     private static final String MAPPING_PATH = "/libs/sling/pipes-client/mapping";
+
     List<Resource> children;
 
+    ValueMap currentMapping;
+
     @Override
-    public void init(Bindings bindings) {
-        ResourceResolver resolver = ((ResourceResolver) bindings.get("resolver"));
-        buildChildren(resolver, MAPPING_PATH);
+    public void activate() {
+        buildChildren(getResourceResolver(), MAPPING_PATH);
     }
 
     protected void buildChildren(ResourceResolver resolver, String mapPath) {
         Resource parent = resolver.getResource(mapPath);
-        logger.info("initiating mapping use with resource {}", parent.getPath());
         children = IteratorUtils.toList(parent.listChildren());
     }
 
@@ -54,5 +55,30 @@ public class MappingUse implements Use {
             dump.put(pipe.getName(), pipeObject);
         }
         return dump.toString();
+    }
+
+    /**
+     * returns mapping corresponding to
+     * @return
+     */
+    public ValueMap getMapping(){
+        if (currentMapping != null){
+            return currentMapping;
+        }
+        String resourceType = getResource().getResourceType();
+        if (StringUtils.isNotBlank(resourceType)) {
+            for (Resource confPipe : getChildren()) {
+                ValueMap properties = confPipe.adaptTo(ValueMap.class);
+                if (properties.get(PN_TYPE, "").equals(resourceType)){
+                    currentMapping = properties;
+                    return currentMapping;
+                }
+            }
+        }
+        return null;
+    }
+
+    public boolean isJsonEditable(){
+        return getMapping() != null && getMapping().get(PN_ARGS, "").equals(BasePipe.NN_CONF);
     }
 }
