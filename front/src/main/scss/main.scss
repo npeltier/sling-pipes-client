@@ -1,10 +1,7 @@
-@import '../../../bower_components/bootstrap/dist/css/bootstrap.min.css';
-@import 'arrow';
 
 .detail {
   width: 95%;
   height:30%;
-  display: inline_block;
 }
 
 .subPipecontainer {
@@ -18,7 +15,7 @@
   text-align: center;
 }
 
-.panelOfSubpipes{
+.panelOfSubpipes {
     height:80%;
     overflow-y: scroll;
     text-align: center;
@@ -39,27 +36,40 @@
   height: 47%;
 }
 
-.panel-heading{
+.panel-heading {
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .col-sm-9 {
   display: inline-block;
-  width: 78%;
+  width: 100%;
 }
 
 .results {
-  width: 58%;
+  width: 71%;
   display: inline-block;
-  float: left;
-  margin-left: 1rem;
-  height: 80%;
+  height: 89%;
+  overflow: hidden;
+  float: right;
+}
+
+.panelbody {
+  text-align: center;
 }
 
 .total_list {
   overflow-y: scroll;
   width: 100%;
-  height: 100%;
+  height: 74%;
+}
+
+.json-edit {
+  margin-bottom:1rem;
+}
+
+#panelResults_Top {
+ height: 99%;
 }
 
 .input-group {
@@ -74,7 +84,7 @@
 }
 
 .panel-primary {
- width:36%;
+ width: 25%;
  float: left;
 }
 
@@ -82,8 +92,18 @@
   margin-top: 1rem;
 }
 
-.btn-danger {
-  float: right;
+.panel {
+ margin-right: 2%;
+}
+
+.buttonControl {
+  display: inline-table;
+  margin: 2.74rem;
+  vertical-align: middle;
+}
+
+.glyphControl {
+  font-size: 2.5rem;
 }
 
 .chevron {
@@ -108,7 +128,7 @@
   color: #45c272;
   border: none;
   position: relative;
-  margin-top: 2rem;
+  margin-top: 4.5rem;
   margin-bottom: 0.7rem;
 }
 
@@ -116,9 +136,8 @@
   content: attr(placeholder);
 
 }
+
 .execute {
-  margin-top:-3.2rem;
-  margin-bottom: 1rem;
 }
 
 .remove {
@@ -141,10 +160,10 @@
 }
 
 .coll {
- margin-top: 5.35rem;
- float: left;
- margin-right: 3rem;
- margin-left: 0.6rem;
+  margin-top: 5.35rem;
+  float: left;
+  margin-right: 3rem;
+  margin-left: 0.6rem;
 }
 
 .coll button {
@@ -173,3 +192,18 @@
 .create {
   padding-bottom: 0.56rem;
 }
+
+#create {
+  border-radius:4px;
+}
+
+#buttonJson-edit {
+  border-radius:4px;
+  border-color: #337ab7;
+}
+
+header {
+    text-align: center;
+}
+
+@import 'arrow';
