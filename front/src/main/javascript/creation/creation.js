@@ -62,11 +62,11 @@ Pipes.Creation = {
     }
 };
 
-$('.create').click(function(){
+$('.createPipe').click(function(){
     var date = new Date(),
-        mapping = $(".inputFieldCrea").data("mapping"),
+        mapping = $("#inputFieldCreation").data("mapping"),
         today = date.getFullYear()+'-'+('0'+(date.getMonth()+1)).slice(-2)+'-'+('0'+date.getDate()).slice(-2)+'_'+('0'+date.getHours()).slice(-2)+'-'+('0'+date.getMinutes()).slice(-2),
-        input = $('.inputFieldCrea').val(),
+        input = $('#inputFieldCreation').val(),
         data = Pipes.Creation.buildJson(input,mapping),
         dataString = JSON.stringify(data),
         parent = "/etc/sling/pipes/history/"+date.getFullYear()+'/'+('0'+(date.getMonth()+1)).slice(-2),
@@ -74,10 +74,12 @@ $('.create').click(function(){
     $.ajax({
         url : parent,
         type :'post',
-        data :{":operation":"import",
+        data :{
+            ":operation":"import",
             ":contentType":"json",
             ":name":today,
-            ":content":dataString},
+            ":content":dataString
+         },
         success : function() {
             document.location.href = newHref;
         }
