@@ -68,19 +68,8 @@ $('.create').click(function(){
         today = date.getFullYear()+'-'+('0'+(date.getMonth()+1)).slice(-2)+'-'+('0'+date.getDate()).slice(-2)+'_'+('0'+date.getHours()).slice(-2)+'-'+('0'+date.getMinutes()).slice(-2),
         input = $('.inputFieldCrea').val(),
         data = Pipes.Creation.buildJson(input,mapping),
-        dataString = JSON.stringify(data),
-        parent = "/etc/sling/pipes/history/"+date.getFullYear()+'/'+('0'+(date.getMonth()+1)).slice(-2),
-        newHref = parent + "/" + today + ".html";
-    $.ajax({
-        url : parent,
-        type :'post',
-        data :{":operation":"import",
-            ":contentType":"json",
-            ":name":today,
-            ":content":dataString},
-        success : function() {
-            document.location.href = newHref;
-        }
+        parent = "/etc/sling/pipes/history/"+date.getFullYear()+'/'+('0'+(date.getMonth()+1)).slice(-2);
+    Pipes.importContent(parent, today, data, function(){
+        document.location.href = parent + "/" + today + ".html";
     });
 });
-
