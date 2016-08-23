@@ -8,7 +8,6 @@ import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.commons.json.JSONException;
 import org.apache.sling.commons.json.JSONObject;
 import org.apache.sling.pipes.BasePipe;
-import org.apache.sling.pipes.Pipe;
 
 import java.util.Arrays;
 import java.util.List;

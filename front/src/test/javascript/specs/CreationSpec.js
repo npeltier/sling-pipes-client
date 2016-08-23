@@ -15,17 +15,17 @@ var mapping = {
         "args":["path"]
       },
       "base":{
-      "jcr:primaryType":"nt:unstructured",
-      "sling:resourceType":"sling/pipes-client/mapping",
-      "pipeType":"slingPipes/base",
-      "name":"base"
+          "jcr:primaryType":"nt:unstructured",
+          "sling:resourceType":"sling/pipes-client/mapping",
+          "pipeType":"slingPipes/base",
+          "name":"base"
       },
       "write":{
           "jcr:primaryType":"nt:unstructured",
           "sling:resourceType":"sling/pipes-client/mapping",
           "pipeType":"slingPipes/write",
           "name":"Write",
-          "args":["conf"]
+          "args":"conf"
         }
     };
 
@@ -101,7 +101,7 @@ var mapping = {
         });
   });
 
-   it("buildJson should convert a simple write command into corresponding writer configuration",function(){
+   it("buildJson should build correctly $ | write pipe",function(){
 
         expect(Pipes.Creation.buildJson("$ /content/foo cq:Page | write sling:resourceType=blah",mapping)).toEqual({
           "jcr:primaryType":"nt:unstructured",
@@ -123,27 +123,6 @@ var mapping = {
                    }
               }
           }
-      });
-      expect(Pipes.Creation.buildJson(" $ /content/test cq:Page | write sling:resourceType=test2",mapping)).toEqual({
-         "jcr:primaryType":"nt:unstructured",
-                  "sling:resourceType":"slingPipes/container",
-                  "conf":{
-                      "jcr:primaryType":"sling:OrderedFolder",
-                      "$":{
-                           "jcr:primaryType":"nt:unstructured",
-                           "sling:resourceType":"slingPipes/slingQuery",
-                           "path":"/content/test",
-                           "expr":"cq:Page"
-                      },
-                      "write":{
-                           "jcr:primaryType":"nt:unstructured",
-                           "sling:resourceType":"slingPipes/write",
-                           "conf":{
-                                "jcr:primaryType":"nt:unstructured",
-                                "sling:resourceType":"test2"
-                           }
-                      }
-                  }
       });
    });
 

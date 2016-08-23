@@ -41,20 +41,21 @@ Pipes.Creation = {
                 "sling:resourceType": mappedConf.pipeType
             };
             if (mappedConf.args) {
-                $.each(mappedConf.args, function(index, arg) {
-                    if (index  < tokens.length - 1) {
-                        var value = tokens[index + 1];
-                        if (arg === "conf") {
-                            argsOfTokens = tokens[index + 1].split(/[=]/gi);
-                            conf = {
-                                "jcr:primaryType": "nt:unstructured"
-                            };
-                            conf[argsOfTokens[0].trim()] = argsOfTokens[1].trim();
-                            value = conf;
-                        }
-                        pipe[arg] = value;
+                if (mappedConf.args === "conf") {
+                    if (tokens.length > 1){
+                        pipe.conf = {
+                            "jcr:primaryType": "nt:unstructured"
+                        };
+                        argsOfTokens = tokens[1].split(/[=]/gi);
+                        pipe.conf[argsOfTokens[0].trim()] = argsOfTokens[1].trim();
                     }
-                });
+                } else {
+                    $.each(mappedConf.args, function(index, arg) {
+                        if (index  < tokens.length - 1) {
+                            pipe[arg] = tokens[index + 1];
+                        }
+                    });
+                }
             }
             return pipe;
         }

@@ -2,6 +2,7 @@ package org.apache.sling.pipes.client;
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.api.scripting.SlingBindings;
 import org.apache.sling.api.scripting.SlingScriptHelper;
 import org.apache.sling.pipes.Pipe;
@@ -38,6 +39,10 @@ public abstract class AbstractUse implements Use {
 
     Pipe getCurrentPipe(){
         return getPlumber().getPipe(getResource());
+    }
+
+    public ValueMap getCurrentProperties(){
+        return getResource().adaptTo(ValueMap.class);
     }
 
     @Override
