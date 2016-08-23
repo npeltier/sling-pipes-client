@@ -1,6 +1,23 @@
-<span>name:<span contenteditable="true" class="editName" >${resource.name}</span></span><br>
-<span>type:<span contenteditable="true"  class="typeInput" data-property="sling:resourceType" placeholder="Empty">${properties["sling:resourceType"]}</span>
-<div class="divselector" data-sly-use.selectInline="/libs/sling/pipes-client/select.html" data-sly-call="${selectInline.selectpick @ id='inTypeSelect' ,clazz='typeSelect'}"></div>
-</span><br>
-<span>expr:<span contenteditable="true" class="edit" data-property="expr" placeholder="Empty">${properties["expr"]}</span></span><br>
-<span>path:<span contenteditable="true" class="edit" data-property="path" placeholder="Empty">${properties["path"]}</span></span><br>
+<div data-sly-use.mapping="org.apache.sling.pipes.client.MappingUse">
+    <span><strong>name:</strong></span>
+    <span contenteditable="true" class="editName" >${resource.name}</span>
+</div>
+<div>
+    <span><strong>type:</strong></span>
+    <span contenteditable="true" class="typeInput" data-property="sling:resourceType" placeholder="Empty">${properties["sling:resourceType"]}</span>
+</div>
+<div class="divselector"
+     data-sly-use.selectInline="/libs/sling/pipes-client/select.html"
+     data-sly-call="${selectInline.selectpick @ id='inTypeSelect' ,clazz='typeSelect'}">
+</div>
+<div>
+    <span><strong>path:</strong></span>
+    <span contenteditable="true" class="edit" data-property="path" placeholder="Empty">${currentProperties.path}</span>
+</div>
+<div data-sly-test.jsonEditable="${mapping.jsonEditable}">
+    <button type="button" class="btn json-edit" data-path="${resource.path}/conf">Configuration</button>
+</div>
+<div data-sly-test="${!jsonEditable}">
+    <span><strong>expr:</strong></span>
+    <span contenteditable="true" class="edit" data-property="expr" placeholder="Empty">${properties.expr}</span>
+</div>

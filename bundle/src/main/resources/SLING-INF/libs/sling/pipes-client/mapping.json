@@ -13,25 +13,27 @@
     "name":"SlingQuery",
     "args":["path","expr"]
   },
-  "JsonPipe": {
+  "json": {
     "jcr:primaryType": "nt:unstructured",
     "sling:resourceType":"sling/pipes-client/mapping",
     "pipeType":"slingPipes/Json",
+    "args":["expr"],
     "name":"Json"
   },
-  "MultiPropertyPie":{
+  "mp":{
     "jcr:primaryType":"nt:unstructured",
     "sling:resourceType":"sling/pipes-client/mapping",
-    "pipeType":"slingPipes/multyProperty",
-    "name":"MultiProperty"
+    "pipeType":"slingPipes/multiProperty",
+    "name":"Multiple Value Property"
   },
-  "XpathPipe":{
+  "find":{
     "jcr:primaryType":"nt:unstructured",
     "sling:resourceType":"sling/pipes-client/mapping",
     "pipeType":"slingPipes/xpath",
+    "args":["expr"],
     "name":"Xpath"
   },
-  "AutorizablePipe":{
+  "auth":{
     "jcr:primaryType":"nt:unstructured",
     "sling:resourceType":"sling/pipes-client/mapping",
     "pipeType":"slingPipes/autorizable",
@@ -48,7 +50,7 @@
     "sling:resourceType":"sling/pipes-client/mapping",
     "pipeType":"slingPipes/filter",
     "name":"Filter",
-    "args":["conf"]
+    "args":"conf"
   },
   "ContainerPipe":{
     "jcr:primaryType":"nt:unstructured",
@@ -66,13 +68,14 @@
     "jcr:primaryType":"nt:unstructured",
     "sling:resourceType":"sling/pipes-client/mapping",
     "pipeType":"slingPipes/write",
-    "name":"Writer",
-    "args":["conf"]
+    "name":"Write",
+    "args":"conf"
   },
-  "Move":{
+  "mv":{
     "jcr:primaryType":"nt:unstructured",
     "sling:resourceType":"sling/pipes-client/mapping",
     "pipeType":"slingPipes/mv",
+    "args":["path","expr"],
     "name":"Move"
   },
   "rm":{
@@ -82,10 +85,11 @@
     "name":"Remove",
     "args":["path"]
   },
-  "Path":{
+  "path":{
     "jcr:primaryType":"nt:unstructured",
     "sling:resourceType":"sling/pipes-client/mapping",
     "pipeType":"slingPipes/path",
+    "args":["expr"],
     "name":"Path"
   }
 }
