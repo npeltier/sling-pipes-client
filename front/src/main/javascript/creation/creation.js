@@ -4,6 +4,7 @@ Pipes.Creation = {
      **/
     "buildJson" : function(input,mapping) {
         var subCommands=Pipes.Creation.parseCommand(input),
+            numSubCommands=1,
             add = {},
             subpipe = {},
             container = {
@@ -13,8 +14,9 @@ Pipes.Creation = {
             };
         $.each(subCommands,function(index){
             subpipeName = subCommands[index].split(/[\s]* /gi)[0];
-            subpipe[subpipeName] = Pipes.Creation.parseSubCommand(subCommands[index],mapping);
+            subpipe[subpipeName] = Pipes.Creation.parseSubCommand(subCommands[index],mapping,numSubCommands);
             $.extend(add, subpipe);
+            numSubCommands+=1;
         });
         $.extend(container.conf, add);
         return container;
@@ -30,18 +32,19 @@ Pipes.Creation = {
     /**
      * parse a subCommands previously parsed with Pipes.Creation.parseCommand and return a Json Object relative to
      **/
-    "parseSubCommand" : function (subCommands,mapping){
+    "parseSubCommand" : function (subCommands,mapping,numSubCommands){
         var tokens = subCommands.split(/[\s]* /gi),
             sub = tokens[0],
             argsOfTokens,
-            mappedConf = mapping[sub];
+            mappedConf = mapping[sub],
+            arg;
         if (mappedConf) {
             var pipe = {
                 "jcr:primaryType":"nt:unstructured",
                 "sling:resourceType": mappedConf.pipeType
             };
             if (mappedConf.args) {
-                if (mappedConf.args === "conf") {
+                if (mappedConf.args === "conf"){
                     if (tokens.length > 1){
                         pipe.conf = {
                             "jcr:primaryType": "nt:unstructured"
@@ -50,11 +53,16 @@ Pipes.Creation = {
                         pipe.conf[argsOfTokens[0].trim()] = argsOfTokens[1].trim();
                     }
                 } else {
+                    if(numSubCommands===1 || !(mappedConf.args.length===2 && tokens.length<3)){
                     $.each(mappedConf.args, function(index, arg) {
                         if (index  < tokens.length - 1) {
                             pipe[arg] = tokens[index + 1];
                         }
                     });
+                    }else if(mappedConf.args.length===2 && tokens.length<3){
+                            arg=mappedConf.args[1];
+                            pipe[arg] = tokens [1];
+                        }
                 }
             }
             return pipe;
