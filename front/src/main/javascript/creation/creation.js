@@ -4,6 +4,7 @@ Pipes.Creation = {
      **/
     "buildJson" : function(input,mapping) {
         var subCommands=Pipes.Creation.parseCommand(input),
+            firstCommand=true,
             add = {},
             subpipe = {},
             container = {
@@ -13,8 +14,9 @@ Pipes.Creation = {
             };
         $.each(subCommands,function(index){
             subpipeName = subCommands[index].split(/[\s]* /gi)[0];
-            subpipe[subpipeName] = Pipes.Creation.parseSubCommand(subCommands[index],mapping);
+            subpipe[subpipeName] = Pipes.Creation.parseSubCommand(subCommands[index],mapping,firstCommand);
             $.extend(add, subpipe);
+            firstCommand=false;
         });
         $.extend(container.conf, add);
         return container;
@@ -30,10 +32,10 @@ Pipes.Creation = {
     /**
      * parse a subCommands previously parsed with Pipes.Creation.parseCommand and return a Json Object relative to
      **/
-    "parseSubCommand" : function (subCommands,mapping){
+    "parseSubCommand" : function (subCommands,mapping,firstCommand){
         var tokens = subCommands.split(/[\s]* /gi),
             sub = tokens[0],
-            argsOfTokens,
+            args = tokens.slice(1),
             mappedConf = mapping[sub];
         if (mappedConf) {
             var pipe = {
@@ -41,18 +43,26 @@ Pipes.Creation = {
                 "sling:resourceType": mappedConf.pipeType
             };
             if (mappedConf.args) {
-                if (mappedConf.args === "conf") {
-                    if (tokens.length > 1){
+                if (mappedConf.args === "conf"){
+                    //special case for configuration where we fill in key=value to a conf subnode
+                    if (args.length > 0){
                         pipe.conf = {
                             "jcr:primaryType": "nt:unstructured"
                         };
-                        argsOfTokens = tokens[1].split(/[=]/gi);
-                        pipe.conf[argsOfTokens[0].trim()] = argsOfTokens[1].trim();
+                        $.each(args, function(index, arg) {
+                            var keyValuePair = arg.split(/[=]/gi);
+                            pipe.conf[keyValuePair[0].trim()] = keyValuePair[1].trim();
+                        });
                     }
                 } else {
-                    $.each(mappedConf.args, function(index, arg) {
-                        if (index  < tokens.length - 1) {
-                            pipe[arg] = tokens[index + 1];
+                    var pathExpected = mappedConf.args.length > 0 && mappedConf.args[0] === "path",
+                        oneArgMissing = mappedConf.args.length === args.length + 1,
+                        //in case path is expected and the sub command is piped and path is implicit,
+                        //we just care about the following args
+                        expectedArgs = mappedConf.args.slice(!firstCommand && pathExpected && oneArgMissing ? 1 : 0);
+                    $.each(expectedArgs, function(index, arg) {
+                        if (index  < args.length) {
+                            pipe[arg] = args[index];
                         }
                     });
                 }
