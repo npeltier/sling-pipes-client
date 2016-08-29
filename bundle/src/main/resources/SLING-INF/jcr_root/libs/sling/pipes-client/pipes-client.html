@@ -2,6 +2,15 @@
 <html lang="en">
     <head data-sly-include="head.html"></head>
     <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Apache Sling Pipes <small>${resource.name}</small></a>
+                </div>
+                <ul class="nav navbar-nav navbar-right" data-sly-include="actions">
+                </ul>
+            </div><!-- /.container-fluid -->
+        </nav>
         <div class="container-fluid" data-sly-include="content.html"></div>
         <script src="/libs/sling/pipes-client/dist/spc.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>

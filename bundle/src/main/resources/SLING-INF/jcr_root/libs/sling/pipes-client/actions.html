@@ -1,16 +1,8 @@
-<div class="btn-toolbar" role="toolbar">
-    <div class="btn-group btn-group-xs" role="group">
-        <button class="btn btn-success " id="create" type="button"data-toggle="modal" title="Create Pipe" data-target="#popupCreation"><span class="glyphicon glyphicon-plus"></span></button>
-    </div>
-    <div class="btn-group btn-group-xs" role="group">
-        <button class="btn btn-default" type="button" role="tab" data-toggle="tab" title="Pipes history" href="#history"><span class="glyphicon glyphicon-time"></span></button>
-        <button class="btn btn-default" type="button" role="tab" data-toggle="tab" title="Pipes Library" href="#library"><span class="glyphicon glyphicon-book"></span></button>
-    </div>
-    <div class="btn-group btn-group-xs" role="group">
-        <button type="button" class="btn btn-default json-edit buttonControl" title="Pipe Columns" id="buttonJson-edit" data-path="${resource.path}/writer"><span class="glyphicon glyphicon-filter"></span></button>
-        <button type="button" class="btn btn-danger execute buttonControl" title="Execute Pipe" ><span class="glyphicon glyphicon-play"></span></button>
-    </div>
-</div>
+<li class="btn btn-success navbar-btn" id="create" type="button" data-toggle="modal" title="Create Pipe" data-target="#popupCreation"><span class="glyphicon glyphicon-plus"></span>&nbsp;Create Pipe</li>
+<li><a role="tab" data-toggle="tab" title="Pipes history" href="#history"><span class="glyphicon glyphicon-time"></span>&nbsp;History</a></li>
+<li><a role="tab" data-toggle="tab" title="Pipes Library" href="#library"><span class="glyphicon glyphicon-book"></span>&nbsp;Library</a></li>
+<li><a class="json-edit" title="Pipe Columns" id="buttonJson-edit" data-path="${resource.path}/writer"><span class="glyphicon glyphicon-filter"></span>&nbsp;Columns</a></li>
+<li><button type="button" class="btn btn-danger execute navbar-btn" title="Execute Pipe" ><span class="glyphicon glyphicon-play"></span>&nbsp;Execute</button></li>
 <div class="modal fade" id="popupCreation" tabindex="-1" role="dialog" aria-labelledby="Create_Pipe">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
