@@ -1,23 +1,16 @@
-<!--<div class="col-sm-12 col-md-12">
-    <div class="input-group">
-        <input data-sly-use.mapping="org.apache.sling.pipes.client.MappingUse" data-mapping="${mapping.jsonDump}" type="text" class="form-control inputFieldCrea" placeholder="Type piped expression...">
-
-
-	  </span>
+<div class="btn-toolbar" role="toolbar">
+    <div class="btn-group btn-group-xs" role="group">
+        <button class="btn btn-success " id="create" type="button"data-toggle="modal" title="Create Pipe" data-target="#popupCreation"><span class="glyphicon glyphicon-plus"></span></button>
     </div>
-</div>-->
-<span class="input-group-btn buttonControl">
-    <button class="btn btn-success " id="create" type="button"data-toggle="modal" data-target="#popupCreation">Create Pipe</button>
-</span>
-<span role="presentation" class="buttonControl active">
-    <a role="tab" data-toggle="tab" href="#history"><span class="glyphicon glyphicon-time glyphControl"></span></a>
-</span>
-<span role="presentation" class="buttonControl ">
-    <a role="tab" data-toggle="tab" href="#library"><span class="glyphicon glyphicon-book glyphControl"></span></a>
-</span>
-<button type="button" class="btn json-edit buttonControl" id="buttonJson-edit" data-path="${resource.path}/writer">Columns</button>
-<button type="button" class="btn btn-danger execute buttonControl" >Execute</button>
-
+    <div class="btn-group btn-group-xs" role="group">
+        <button class="btn btn-default" type="button" role="tab" data-toggle="tab" title="Pipes history" href="#history"><span class="glyphicon glyphicon-time"></span></button>
+        <button class="btn btn-default" type="button" role="tab" data-toggle="tab" title="Pipes Library" href="#library"><span class="glyphicon glyphicon-book"></span></button>
+    </div>
+    <div class="btn-group btn-group-xs" role="group">
+        <button type="button" class="btn btn-default json-edit buttonControl" title="Pipe Columns" id="buttonJson-edit" data-path="${resource.path}/writer"><span class="glyphicon glyphicon-filter"></span></button>
+        <button type="button" class="btn btn-danger execute buttonControl" title="Execute Pipe" ><span class="glyphicon glyphicon-play"></span></button>
+    </div>
+</div>
 <div class="modal fade" id="popupCreation" tabindex="-1" role="dialog" aria-labelledby="Create_Pipe">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

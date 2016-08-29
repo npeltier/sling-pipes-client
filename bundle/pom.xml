@@ -46,10 +46,10 @@
                 <configuration>
                     <instructions>
                         <Sling-Initial-Content>
-                            SLING-INF/libs/sling/pipes-client;overwrite:=true;path:=/libs/sling/pipes-client,
+                            SLING-INF/jcr_root/libs/sling/pipes-client;overwrite:=true;path:=/libs/sling/pipes-client,
                             dist;overwrite:=true;path:=/libs/sling/pipes-client/dist,
-                            SLING-INF/etc/sling/pipes;overwrite:=false;path:=/etc/sling/pipes,
-                            SLING-INF/apps/slingPipes;overwrite:=true;path:=/apps/slingPipes
+                            SLING-INF/jcr_root/etc/sling/pipes;overwrite:=false;path:=/etc/sling/pipes,
+                            SLING-INF/jcr_root/apps/slingPipes;overwrite:=true;path:=/apps/slingPipes
                         </Sling-Initial-Content>
                     </instructions>
                 </configuration>
