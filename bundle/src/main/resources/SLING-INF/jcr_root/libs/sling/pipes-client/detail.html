@@ -1,8 +1,5 @@
-<div class="panel-heading">
-    <h3 class="panel-title">${properties['jcr:title']||resource.name}</h3>
-</div>
-<div class="panelOfSubpipes">
-    <div class="subPipecontainer">
+<div class="pipesframe">
+    <div class="pipesflow">
         <div data-sly-use.use="org.apache.sling.pipes.client.DetailUse" data-sly-list.subpipe="${use.subpipes}" class="pipecontainer">
             <div class="subpipe">
                 <button  class="glyphicon glyphicon-chevron-up chevron chevronUp"></button>

@@ -1,8 +1,31 @@
-<li class="btn btn-success navbar-btn" id="create" type="button" data-toggle="modal" title="Create Pipe" data-target="#popupCreation"><span class="glyphicon glyphicon-plus"></span>&nbsp;Create Pipe</li>
-<li><a role="tab" data-toggle="tab" title="Pipes history" href="#history"><span class="glyphicon glyphicon-time"></span>&nbsp;History</a></li>
-<li><a role="tab" data-toggle="tab" title="Pipes Library" href="#library"><span class="glyphicon glyphicon-book"></span>&nbsp;Library</a></li>
-<li><a class="json-edit" title="Pipe Columns" id="buttonJson-edit" data-path="${resource.path}/writer"><span class="glyphicon glyphicon-filter"></span>&nbsp;Columns</a></li>
-<li><button type="button" class="btn btn-danger execute navbar-btn" title="Execute Pipe" ><span class="glyphicon glyphicon-play"></span>&nbsp;Execute</button></li>
+<li role="presentation" class="btn btn-success navbar-btn" id="create" type="button" data-toggle="modal" title="Create Pipe" data-target="#popupCreation">
+    <span class="glyphicon glyphicon-plus"></span>&nbsp;Create Pipe
+</li>
+<li role="presentation" class="btn-group navbar-btn">
+    <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;Navigate</button>
+    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="caret"></span> <span class="sr-only">Toggle Dropdown</span> </button>
+    <ul class="dropdown-menu">
+        <li><a title="Pipes history" href="#history"><span class="glyphicon glyphicon-time"></span>&nbsp;History</a></li>
+        <li><a title="Pipes Library" href="#library"><span class="glyphicon glyphicon-book"></span>&nbsp;Library</a></li>
+    </ul>
+</li>
+<li role="presentation" class="btn-group navbar-btn">
+    <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-wrench"></span>&nbsp;Configure</button>
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="caret"></span> <span class="sr-only">Toggle Dropdown</span> </button>
+    <ul class="dropdown-menu">
+        <li><a class="json-edit" title="Pipe additional bindings" data-path="${resource.path}/additionalBindings"><span class="glyphicon glyphicon-cog"></span>&nbsp;Options</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a class="json-edit" title="Pipe Output" data-path="${resource.path}/writer"><span class="glyphicon glyphicon-filter"></span>&nbsp;Output Columns</a></li>
+        <li><a class="json-edit" title="Pipe addinitional bindings" data-path="${resource.path}/additionalBindings"><span class="glyphicon glyphicon-link"></span>&nbsp;Additional bindings</a></li>
+    </ul>
+</li>
+<li role="presentation">
+    <button type="button" class="btn btn-danger execute navbar-btn" title="Execute Pipe" >
+        <span class="glyphicon glyphicon-play"></span>&nbsp;Execute
+    </button>
+</li>
 <div class="modal fade" id="popupCreation" tabindex="-1" role="dialog" aria-labelledby="Create_Pipe">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -17,7 +40,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary createPipe" data-dismiss="modal">Create</button>
+                    <button type="button" class="btn btn-primary create" data-dismiss="modal">Create</button>
                 </div>
             </div>
         </div>

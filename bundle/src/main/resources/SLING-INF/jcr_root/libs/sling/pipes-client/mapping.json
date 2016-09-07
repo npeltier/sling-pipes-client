@@ -1,9 +1,10 @@
 {
   "jcr:primaryType":"nt:unstructured",
-  "Basepipe":{
+  "base":{
     "jcr:primaryType":"nt:unstructured",
     "sling:resourceType":"sling/pipes-client/mapping",
     "pipeType":"slingPipes/base",
+    "args":["path"],
     "name":"Base"
   },
   "$":{
@@ -58,11 +59,19 @@
     "pipeType":"slingPipes/container",
     "name":"Container"
   },
-  "ReferencePipe":{
+  "ref":{
     "jcr:primaryType":"nt:unstructured",
     "sling:resourceType":"sling/pipes-client/mapping",
     "pipeType":"slingPipes/reference",
-    "name":"Reference"
+    "name":"Reference",
+    "args":"ref"
+  },
+  "not":{
+    "jcr:primaryType":"nt:unstructured",
+    "sling:resourceType":"sling/pipes-client/mapping",
+    "pipeType":"slingPipes/not",
+    "name":"Not",
+    "args":"ref"
   },
   "write":{
     "jcr:primaryType":"nt:unstructured",

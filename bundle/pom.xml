@@ -47,7 +47,7 @@
                     <instructions>
                         <Sling-Initial-Content>
                             SLING-INF/jcr_root/libs/sling/pipes-client;overwrite:=true;path:=/libs/sling/pipes-client,
-                            dist;overwrite:=true;path:=/libs/sling/pipes-client/dist,
+                            dist;overwrite:=true;path:=/etc/sling/pipes-client/dist,
                             SLING-INF/jcr_root/etc/sling/pipes;overwrite:=false;path:=/etc/sling/pipes,
                             SLING-INF/jcr_root/apps/slingPipes;overwrite:=true;path:=/apps/slingPipes
                         </Sling-Initial-Content>

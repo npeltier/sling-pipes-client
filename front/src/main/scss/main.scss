@@ -1,13 +1,25 @@
+;
 
 .detail {
   width: 95%;
   height:30%;
 }
 
-.subPipecontainer {
-  min-height: 90%;
-  display: inline-flex;
-  width: 100%;
+ul.nav.navbar-nav {
+  > li {
+    margin-right: 0.5rem;
+  }
+}
+
+.pipesframe {
+  height:80%;
+  overflow-y: scroll;
+  text-align: center;
+  .pipesflow {
+    min-height: 90%;
+    display: inline-flex;
+    width: 100%;
+  }
 }
 
 .pipecontainer {
@@ -15,11 +27,6 @@
   text-align: center;
 }
 
-.panelOfSubpipes {
-    height:80%;
-    overflow-y: scroll;
-    text-align: center;
-}
 
 .subpipe {
   text-align: center;
