@@ -1,5 +1,5 @@
 $arrowheight: 2rem;
-$arrowwidth: 19rem / 2;
+$arrowwidth: $pipe-width / 2;
 
 .subpipe:before,.subpipe:after{
   border: solid transparent;
@@ -14,7 +14,7 @@ $arrowwidth: 19rem / 2;
 .subpipe:before {
   border-style: solid;
   border-color: white transparent transparent transparent;
-  margin-left:-10rem;
+  margin-left:-$arrowwidth;
   z-index: 0;
 }
 
@@ -23,7 +23,7 @@ $arrowwidth: 19rem / 2;
   left: 50%;
   border-color: rgba(28, 82, 117, 0);
   border-top-color: #88b7d5;
-  margin-left: -51%;
+  margin-left: -$arrowwidth;
   top: 21rem;
   z-index: 1;
 }
