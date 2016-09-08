@@ -1,5 +1,19 @@
-<div class="col-sm-3 col-md-3" data-sly-include="detail.html"></div>
-<div class="col-sm-8 col-md-8 panel panel-default results" data-sly-include="mainPanel.html"></div>
+<div data-sly-use.pipe="org.apache.sling.pipes.client.ContainerPipeUse" data-sly-test.valid="${pipe.validPipe}" class="container-fluid">
+    <div class="col-sm-3 col-md-3" data-sly-include="detail.html"></div>
+    <div class="col-sm-8 col-md-8 panel panel-default results" data-sly-include="mainPanel.html"></div>
+</div>
+<div data-sly-test="${!valid}" class="container-fluid">
+    <div class="jumbotron text-center ">
+        <h2>Welcome to sling pipes client !</h2>
+        <p>Please create a pipe or browse through pipes history and library</p>
+        <ul>
+            <a class="btn btn-success navbar-btn" type="button" data-toggle="modal" title="Create Pipe" data-target="#popupCreation"><span class="glyphicon glyphicon-plus"></span>Create Pipe</a>
+            <a class="btn btn-primary navbar-btn" type="button" title="Pipes History" href="#history" data-toggle="modal" data-target="#history-popup"><span class="glyphicon glyphicon-time"></span>&nbsp;History</a>
+            <a class="btn btn-info navbar-btn" type="button" title="Pipes Library" href="#library" data-toggle="modal" data-target="#library-popup"><span class="glyphicon glyphicon-book"></span>&nbsp;Library</a>
+        </ul>
+        <p class="pull-right"><small>learn more about Apache Sling Pipes <a href="https://sling.apache.org/documentation/bundles/sling-pipes.html">on Apache Sling website</a></small></p>
+    </div>
+</div>
 <div class="modal fade" id="jsonedit-popup" tabindex="-1" role="dialog" aria-labelledby="Edit_JSON">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -23,7 +37,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"></h4>
+                <h4 class="modal-title">Pick up a pipe from history</h4>
             </div>
             <div>
                 <div class="modal-body" data-sly-resource="${'/etc/sling/pipes/history'}">
@@ -40,7 +54,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"></h4>
+                <h4 class="modal-title">Pick up a pipe from library</h4>
             </div>
             <div>
                 <div class="modal-body" data-sly-resource="${'/etc/sling/pipes/library'}">

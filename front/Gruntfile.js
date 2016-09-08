@@ -18,7 +18,7 @@ module.exports = function(grunt) {
                 'user': user,
                 'pass': pass
             }
-        }
+        };
     };
     grunt.initConfig({
         jshint: {

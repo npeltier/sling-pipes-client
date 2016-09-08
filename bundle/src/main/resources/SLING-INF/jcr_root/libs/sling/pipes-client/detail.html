@@ -1,12 +1,12 @@
 <div class="pipesflow">
-    <div data-sly-use.use="org.apache.sling.pipes.client.DetailUse" class="pipescontainer">
-        <div data-sly-repeat.subpipe="${use.subpipes}" class="subpipe">
+    <div data-sly-use.pipe="org.apache.sling.pipes.client.ContainerPipeUse" class="pipescontainer">
+        <div data-sly-repeat.subpipe="${pipe.subpipes}" class="subpipe">
             <button  class="glyphicon glyphicon-chevron-up chevron chevronUp"></button>
             <button  class="glyphicon glyphicon-remove  remove"></button>
             <div class="details" data-path="${subpipe.path}" data-sly-resource="${subpipe.path @ resourceType='sling/pipes-client/subpipe'}"></div>
             <button  class="glyphicon glyphicon-chevron-down chevron chevronDown"></button>
         </div>
-        <button data-sly-test="${use.pipe}" class="glyphicon glyphicon-plus-sign plus" data-toggle="modal" data-target="#popup"></button>
+        <button class="glyphicon glyphicon-plus-sign plus" data-toggle="modal" data-target="#popup"></button>
     </div>
 </div>
 <div class="modal fade" id="popup" tabindex="-1" role="dialog" aria-labelledby="Edit_subPipe">
@@ -20,8 +20,8 @@
                 <div class="modal-body">
                     <label  class="col-sm-2 control-label" for="inputName">Name</label>
                     <input id="inputName" type="name" class="form-control" placeholder="Edit Name"/>
-                    <label for="selecter">Type :</label>
-                    <div data-sly-use.select="select.html" data-sly-call="${select.selectpick @ id='select' ,clazz='selectpicker'}"></div>
+                    <label for="typeselect">Type :</label>
+                    <div data-sly-use.select="select.html" data-sly-call="${select.selectpick @ id='typeselect' ,clazz='selectpicker'}"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

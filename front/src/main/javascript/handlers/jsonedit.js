@@ -7,13 +7,15 @@ var editJSON = function(path, title, data){
         pathInfo = Pipes.extractPathInfo(path);
     $(POPUP_SEL + " .modal-title").text(title);
     $(POPUP_SEL + " button.savejson").click(function(){
-        Pipes.importContent(pathInfo.parent, pathInfo.name, editor.get());
+        Pipes.importContent(pathInfo.parent, pathInfo.name, editor.get(), function(){
+            Pipes.execute(false);
+        });
     });
     editor.set(data);
     modal.modal();
 };
 
-$('button.json-edit').click(function(){
+$('.json-edit').click(function(){
     var button = $(this),
         path = button.data("path"),
         title = button.data("title") || "Edit JSON";

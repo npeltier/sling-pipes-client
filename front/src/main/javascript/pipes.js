@@ -1,19 +1,51 @@
 Pipes = {
-    handleResults : function(data) {
-        var list = $(".results ul");
+    execute: function(forReal){
+        $.ajax({
+            url: Pipes.retrievePipePath() + ".json",
+            type:'post',
+            data:{
+                dryRun:!forReal
+            },
+            dataType:'json',
+            success: function (data) {
+                Pipes.handleResults(data);
+            }
+        });
+    },
+    handleResults : function(data, dryrun) {
+        var table = $(".results table");
         $(".results span.total").text(data.size);
-        if (data.items){
-            $.each(data.items, function(idx, item){
-                $("<li/>").addClass("list-group-item").text(item).appendTo(list);
+        table.children("*").remove();
+        if (data.size > 0 &&  data.items){
+            var head = $("<thead><tr class='columns'><td>#</td></tr></thead>"),
+                body = $("<tbody class='table-striped'></tbody>"),
+                headrow = head.find("tr.columns"),
+                keys = [];
+            if (data.items[0] instanceof Object){
+                $.each(data.items[0], function (key, value) {
+                    keys.push(key);
+                });
+            } else {
+                keys.push("path");
+            }
+            $.each(keys, function (i, key) {
+                headrow.append("<td>" + key + "</td>");
             });
+            table.append(headrow);
+            $.each(data.items, function(idx, item){
+                var row = $("<tr></tr>");
+                row.append("<td>" + idx + "</td>");
+                $.each(keys, function(k, key){
+                    row.append("<td>"+ (item instanceof Object ? item[key] : item ) +"</td>");
+                });
+                body.append(row);
+            });
+            table.append(body);
         }
     },
     retrievePipePath : function() {
         path = document.location.pathname;
         return path.substring(0, path.indexOf(".html"));
-    },
-    emptyResultsList : function(data) {
-            $( ".list-group-item" ).remove();
     },
     importContent : function(parent, name, json, handler){
         $.ajax({
@@ -47,7 +79,7 @@ Pipes = {
 
 $(document).ready(function(){
     var sidebar=0;
-    $.getJSON(Pipes.retrievePipePath() + ".json").then(Pipes.handleResults);
+    Pipes.execute(false);
     $('#select').val('slingPipes/base');
     $('.typeSelect').hide();
     $( ".divselector" ).each(function() {

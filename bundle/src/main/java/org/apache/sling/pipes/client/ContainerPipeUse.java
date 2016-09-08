@@ -10,18 +10,18 @@ import java.util.List;
 /**
  * use for retrieving a pipe details
  */
-public class DetailUse extends AbstractUse {
+public class ContainerPipeUse extends AbstractUse {
 
     List<Resource> subpipes;
 
-    boolean isPipe = false;
+    boolean isValidPipe = false;
 
     @Override
     public void activate() {
         Resource resource = getResource();
         subpipes = new ArrayList<>();
-        isPipe = resource.isResourceType(ContainerPipe.RESOURCE_TYPE);
-        if (isPipe){
+        isValidPipe = resource.isResourceType(ContainerPipe.RESOURCE_TYPE) && resource.getChild("conf") != null;
+        if (isValidPipe){
             Resource parent = resource.getChild(BasePipe.NN_CONF);
             for (Iterator<Resource> it = parent.listChildren(); it.hasNext(); ) {
                 subpipes.add(it.next());
@@ -33,7 +33,7 @@ public class DetailUse extends AbstractUse {
         return subpipes;
     }
 
-    public boolean isPipe() {
-        return isPipe;
+    public boolean isValidPipe() {
+        return isValidPipe;
     }
 }

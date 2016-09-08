@@ -1,3 +1,4 @@
+
 $('.edit').on('focusout',function(){
     var path =$(this).parents(".subpipe").data("path"),
         property = $(this).data("property"),
