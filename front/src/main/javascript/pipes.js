@@ -74,6 +74,23 @@ Pipes = {
         pathInfo.parent = path.substring(0, path.lastIndexOf("/"));
         pathInfo.name = path.substring(pathInfo.parent.length + 1, path.length);
         return pathInfo;
+    },
+    /**
+     * filters out protected JCR properties
+     * @param data
+     * @returns {*}
+     */
+    removeProtectedProperties: function(data){
+        $.each(data, function(key, value){
+            if ($.inArray(key, ["jcr:primaryType","jcr:created","jcr:createdBy"]) !== -1) {
+                delete data[key];
+            } else {
+                if (typeof(value) == "object"){
+                    data[key] = Pipes.removeProtectedProperties(value);
+                }
+            }
+        });
+        return data;
     }
 };
 

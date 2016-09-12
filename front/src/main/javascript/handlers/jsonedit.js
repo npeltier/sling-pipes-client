@@ -11,7 +11,13 @@ var editJSON = function(path, title, data){
             Pipes.execute(false);
         });
     });
-    editor.set(data);
+
+    editor.set(Pipes.removeProtectedProperties(data));
+
+    modal.on("hidden.bs.modal", function(){
+        $(POPUP_SEL + " .modal-body").children("*").remove();
+    });
+
     modal.modal();
 };
 
