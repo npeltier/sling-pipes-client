@@ -1,15 +1,13 @@
-<div data-sly-use.mapping="org.apache.sling.pipes.client.MappingUse">
-    <span><strong>name:</strong></span>
-    <span contenteditable="true" class="editName" >${resource.name}</span>
+<div class="actions pull-right">&nbsp;
+    <a href="#"><span class="glyphicon glyphicon-minus-sign text-danger" aria-hidden="true">&nbsp;</span></a>
+    <a href="#">&nbsp;<span class="glyphicon glyphicon-arrow-down movedown" aria-hidden="true">&nbsp;</span></a>
+    <a href="#">&nbsp;<span class="glyphicon glyphicon-arrow-up moveup" aria-hidden="true">&nbsp;</span></a>
+    <a href="#">&nbsp;<span class="glyphicon glyphicon-pencil" aria-hidden="true">&nbsp;</span></a>
+    </span>
 </div>
-<div>
-    <span><strong>type:</strong></span>
-    <span contenteditable="true" class="typeInput" data-property="sling:resourceType" placeholder="Empty">${properties["sling:resourceType"]}</span>
-</div>
-<div class="divselector"
-     data-sly-use.selectInline="/libs/sling/pipes-client/select.html"
-     data-sly-call="${selectInline.selectpick @ id='inTypeSelect' ,clazz='typeSelect'}">
-</div>
+<h3 data-sly-use.mapping="org.apache.sling.pipes.client.MappingUse">
+    <span class="editName" contenteditable>${resource.name}</span>&nbsp;<small>${properties["sling:resourceType"]}</small>
+</h3>
 <div>
     <span><strong>path:</strong></span>
     <span contenteditable="true" class="edit" data-property="path" placeholder="Empty">${currentProperties.path}</span>

@@ -56,6 +56,10 @@ module.exports = function(grunt) {
                 },
                 src: cssSources,
                 dest: 'target/classes/dist/spc.css'
+            },
+            svg: {
+                src: 'src/main/svgs/arrow.css',
+                dest: 'target/classes/dist/arrow.css'
             }
         },
         copy: {

@@ -1,10 +1,7 @@
-<div class="pipesflow">
+<div class="pipesflow col-md-10">
     <div data-sly-use.pipe="org.apache.sling.pipes.client.ContainerPipeUse" class="pipescontainer">
-        <div data-sly-repeat.subpipe="${pipe.subpipes}" class="subpipe">
-            <button  class="glyphicon glyphicon-chevron-up chevron chevronUp"></button>
-            <button  class="glyphicon glyphicon-remove  remove"></button>
-            <div class="details" data-path="${subpipe.path}" data-sly-resource="${subpipe.path @ resourceType='sling/pipes-client/subpipe'}"></div>
-            <button  class="glyphicon glyphicon-chevron-down chevron chevronDown"></button>
+        <div data-sly-repeat.subpipe="${pipe.subpipes}" class="subpipe arrow row find">
+            <section class="col-md-10 details write" data-path="${subpipe.path}" data-sly-resource="${subpipe.path @ resourceType='sling/pipes-client/subpipe'}"></section>
         </div>
         <button class="glyphicon glyphicon-plus-sign plus" data-toggle="modal" data-target="#popup"></button>
     </div>

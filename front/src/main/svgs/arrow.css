@@ -1,0 +1,28 @@
+.arrow::before {
+  height: 5rem;
+  width: 100%;
+  background-size: cover;
+  background-image:url('data:image/svg+xml;utf8,%3C%3Fxml-stylesheet%20type%3D%22text%2Fcss%22%20href%3D%22%2Fetc%2Fsling%2Fpipes-client%2Fdist%2Farrow.css%22%20%3F%3E%20%20%20%20%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20201%2026.6%22%3E%0A%3Cpolyline%20class%3D%22arrow%22%20points%3D%220.5%2026.6%200.5%200.6%20100.5%2015%20200.5%200.6%20200.5%2026.6%22%2F%3E%0A%3C%2Fsvg%3E');
+}
+.arrow::after {
+  height: 5rem;
+  width: 100%;
+  background-size: cover;
+  background-image:url('data:image/svg+xml;utf8,%3C%3Fxml-stylesheet%20type%3D%22text%2Fcss%22%20href%3D%22/etc/sling/pipes-client/dist/arrow.css%22%20%3F%3E%20%20%20%20%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20201%2025.51%22%3E%3Cpolyline%20class%3D%22arrow%22%20points%3D%22200.5%20-1%20200.5%205%20100.5%2020%200.5%206%200.5%20-1%22%2F%3E%3C%2Fsvg%3E');
+}
+
+.arrow-svg {
+  fill: none;
+}
+
+.write .arrow-svg {
+  stroke:pink;
+}
+
+.search .arrow-svg {
+  stroke:palegreen;
+}
+
+.control .arrow-svg {
+  stroke: orange;
+}

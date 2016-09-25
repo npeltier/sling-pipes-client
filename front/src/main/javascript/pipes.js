@@ -91,6 +91,21 @@ Pipes = {
             }
         });
         return data;
+    },
+    /**
+     * return jcr path of a given subpipe elt
+     * @param pipe
+     */
+    getSubpipePath : function(subpipe){
+        return $(subpipe).children(".details").data("path");
+    },
+    /**
+     * get name from path
+     * @param path
+     * @returns {string}
+     */
+    getNameFromPath : function(path){
+        return path.substring(path.lastIndexOf("/")+1);
     }
 };
 
@@ -104,27 +119,5 @@ $(document).ready(function(){
         $(this).children().val(value);
     });
     $.getJSON(Pipes.retrievePipePath() + ".json").then(Pipes.handleResults);
-    $(".collapse").hide();
-    $(".glyphicon-time").click(function () {
-            if (sidebar===0 || sidebar===1){$(".collapse").toggle();}
-            if (sidebar===0){
-                sidebar=1;
-                $('.results').animate({'width': '54.3%'},0);
-             }else if(sidebar===1){
-                sidebar-=1;
-                $('.results').animate({'width': '71%'},100);
-             }else{sidebar=1;}
-        });
-    $(".glyphicon-book").click(function () {
-            if (sidebar===0 || sidebar===2){$(".collapse").toggle();}
-            if (sidebar===0){
-                sidebar=2;
-                $('.results').animate({'width': '54.3%'},0);
-            }else if(sidebar===2){
-                sidebar-=2;
-                $('.results').animate({'width': '71%'},100);
-            }else{sidebar=2;}
-        });
-
 });
 

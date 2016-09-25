@@ -1,57 +1,14 @@
-$pipe-width: 23rem;
 .pipesflow {
   height: 100%;
   overflow-y: scroll;
   .pipescontainer {
-    .subpipe {
-      text-align: center;
-      width: $pipe-width;
-      height: 21rem;
-      position: relative;
-      background: #88b7d5;
-      display: inline-block;
-      margin-bottom: 1rem;
-      .details {
-        margin-top: 6rem;
-        height: 47%;
-        padding-left: 2.5rem;
-        text-align: left;
-        font-size: smaller;
-        font-family: "Courier"
-      }
-      .chevron {
-        margin: 0.3rem;
-        background-color: transparent;
-        border: none;
-        color: #1e7f99;
-        float: left;
-        margin-inline-end: auto;
-        margin-right: 1rem;
-        padding-top: 2.5rem;
-      }
-      .remove {
-        margin: 0.3rem;
-        float: right;
-        color: #e94747;
-        background-color: transparent;
-        border: none;
-        margin-inline-end: auto;
-        padding-top: 2rem;
-      }
-    }
-    @import 'arrow';
-    > button.plus {
+    .subpipe section {
+      border-width: 0 0.25rem 0 0.25rem;
+      border-style: solid;
       width: 100%;
-      height: 3rem;
-      font-size: 3rem;
-      background-color: transparent;
-      color: #45c272;
-      border: none;
-      position: relative;
-      margin-top:2rem;
-    }
-    > button.plus:hover {
-      text-decoration:none;
+      .actions {
+        font-size: x-small;
+      }
     }
   }
 }

@@ -58,33 +58,37 @@ $("select#inTypeSelect").on('change',function(){
         });
 });
 
-$('.chevronUp').click(function(){
-    var current=$(this).parent().children('.subpipeContent').data('path'),
-        prev=$(this).parent().prev().children('.subpipeContent').data('path'),
-        prevName=prev.substring(prev.lastIndexOf("/")+1);
+var getCurrentPipePath = function(elt){
+    return Pipes.getSubpipePath($(elt).parent(".subpipe"));
+};
+
+$('.moveup').click(function(){
+    var current = getCurrentPipePath(this),
+        prev = Pipes.getSubpipePath($(this).parent(".subpipe").prev()),
+        prevName = Pipes.getNameFromPath(prev);
     $.ajax({
         url: current,
         type:'post',
-        data: {":order":"before "+prevName},
+        data: {":order":"before " + prevName},
         success: function(){
-                location.reload();
+            location.reload();
         }
     });
 });
 
-$('.chevronDown').click(function(){
-    var current=$(this).parent().children('.subpipeContent').data('path'),
-        next=$(this).parent().next().children('.subpipeContent').data("path"),
-        nextName=next.substring(next.lastIndexOf("/")+1);
+$('.movedown').click(function(){
+    var current = getCurrentPipePath(this),
+        next = Pipes.getSubpipePath($(this).parent(".subpipe").next()),
+        nextName= Pipes.getNameFromPath(next);
     $.ajax({
         url: current,
         type:'post',
-        data: {":order":"after "+nextName},
+        data: {":order":"after " + nextName},
         success: function(){
-                location.reload();
+            location.reload();
         }
-        });
-  });
+    });
+});
 
 $('.saveSubPipe').click (function(){
    var inputN=$('#inputName').val();

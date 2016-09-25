@@ -1,11 +1,11 @@
 <div data-sly-use.pipe="org.apache.sling.pipes.client.ContainerPipeUse" data-sly-test.valid="${pipe.validPipe}" class="container-fluid">
-    <div class="col-sm-3 col-md-3" data-sly-include="detail.html"></div>
-    <div class="col-sm-8 col-md-8 panel panel-default results" data-sly-include="mainPanel.html"></div>
+    <div class="col-sm-5 col-md-5" data-sly-include="detail.html"></div>
+    <div class="col-sm-6 col-md-6 panel panel-default results" data-sly-include="mainPanel.html"></div>
 </div>
 <div data-sly-test="${!valid}" class="container-fluid">
     <div class="jumbotron text-center ">
-        <h2>Welcome to sling pipes client !</h2>
-        <p>Please create a pipe or browse through pipes history and library</p>
+        <h2>Welcome to Sling Pipes!</h2>
+        <p>Please create a pipe or browse through pipe history and library</p>
         <ul>
             <a class="btn btn-success navbar-btn" type="button" data-toggle="modal" title="Create Pipe" data-target="#popupCreation"><span class="glyphicon glyphicon-plus"></span>Create Pipe</a>
             <a class="btn btn-primary navbar-btn" type="button" title="Pipes History" href="#history" data-toggle="modal" data-target="#history-popup"><span class="glyphicon glyphicon-time"></span>&nbsp;History</a>
