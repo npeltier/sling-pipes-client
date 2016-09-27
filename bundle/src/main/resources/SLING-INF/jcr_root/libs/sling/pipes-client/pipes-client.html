@@ -5,13 +5,12 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Apache Sling Pipes <small><strong><span class="pipename" contenteditable="true">${resource.name}</span></strong></small></a>
+                    <a class="navbar-brand" href="#">Apache Sling Pipes <small><strong><span class="pipename" contenteditable data-edition="slingpipesclient_nodename" data-path="${resource.path}"}>${resource.name}</span></strong></small></a>
                 </div>
                 <ul class="nav navbar-nav nav-pills navbar-right" data-sly-include="actions"></ul>
             </div>
         </nav>
         <main data-sly-include="content.html"></main>
         <script src="/etc/sling/pipes-client/dist/spc.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     </body>
 </html>

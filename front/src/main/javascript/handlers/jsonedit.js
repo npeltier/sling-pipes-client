@@ -1,7 +1,10 @@
-var POPUP_SEL = "#jsonedit-popup";
-var editJSON = function(path, title, data){
+var POPUP_SEL = "#jsonedit-popup",
+    editJSON = function(path, title, data){
     var container = $(POPUP_SEL + " .modal-body")[0],
-        options = {},
+        options = {
+            "theme": "bootsrap3",
+            "input_height": "30rem"
+        },
         editor = new JSONEditor(container, options),
         modal = $(POPUP_SEL),
         pathInfo = Pipes.extractPathInfo(path);
@@ -33,4 +36,15 @@ $('.json-edit').click(function(){
     }).fail(function(){
         editJSON(path, title, {});
     });
+});
+
+$(document).ready(function(){
+   $('.json-view').each(function(idx, elt){
+       var options = {
+           "theme": "bootsrap3",
+           "iconlib": "bootstrap3"
+       },
+       view = new JSONEditor(elt, options);
+       view.set(Pipes.removeProtectedProperties($(elt).data("json")));
+   });
 });

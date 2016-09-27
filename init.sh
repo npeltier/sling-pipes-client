@@ -5,6 +5,9 @@ fi
 if [ -z $PORT ]; then
     PORT="8080";
 fi
+if [ -z $CRED ]; then
+    CRED="admin:admin";
+fi
 echo "starting the initialisation of sling pipes client on $HOST:$PORT, that suppose you have svn & maven installed..."
 HOME=`pwd`
 TMP="$HOME/tmp_init"
@@ -20,4 +23,8 @@ mvn clean install sling:install -Dsling.url=http://$HOST:$PORT/system/console
 echo clean up temporary folder
 rm -rf "$TMP"
 cd "$HOME"
-mvn clean install sling:install -Dsling.url=http://$HOST:$PORT/system/console
+mvn clean install 
+cd bundle
+mvn sling:install -Dsling.url=http://$HOST:$PORT/system/console
+echo configuring extra granite library for cq deployments...
+curl -u $CRED -Fextrajs=/etc/clientlibs/granite/jquery/granite/csrf.js http://$HOST:$PORT/etc/sling/pipes-client

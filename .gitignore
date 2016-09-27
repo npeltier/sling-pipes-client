@@ -6,6 +6,7 @@ front/node
 .metadata
 .settings
 .project
+.viminfo
 *.log
 *.iml
 .DS_Store

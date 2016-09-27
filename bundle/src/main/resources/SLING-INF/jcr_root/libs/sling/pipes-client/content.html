@@ -1,4 +1,5 @@
 <div data-sly-use.pipe="org.apache.sling.pipes.client.ContainerPipeUse" data-sly-test.valid="${pipe.validPipe}" class="container-fluid">
+    <div class="col-sm-11 col-md-11"><p class="center-block">${properties.jcr:description @ context='html'}</p></div>
     <div class="col-sm-5 col-md-5" data-sly-include="detail.html"></div>
     <div class="col-sm-6 col-md-6 panel panel-default results" data-sly-include="mainPanel.html"></div>
 </div>
@@ -14,24 +15,7 @@
         <p class="pull-right"><small>learn more about Apache Sling Pipes <a href="https://sling.apache.org/documentation/bundles/sling-pipes.html">on Apache Sling website</a></small></p>
     </div>
 </div>
-<div class="modal fade" id="jsonedit-popup" tabindex="-1" role="dialog" aria-labelledby="Edit_JSON">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"></h4>
-            </div>
-            <div>
-                <div class="modal-body jsoneditor">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary savejson" data-dismiss="modal">Save JSON</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<sly data-sly-include="jsoneditpopup.html"></sly>
 <div class="modal fade" id="history-popup" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

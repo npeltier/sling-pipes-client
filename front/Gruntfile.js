@@ -5,8 +5,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-http');
-    var jsSources = ['bower_components/jsoneditor/dist/jsoneditor.min.js','bower_components/jquery/dist/jquery.min.js','src/main/javascript/pipes.js','src/main/javascript/**/*.js'],
-        cssSources = ['bower_components/jsoneditor/dist/jsoneditor.min.css','target/classes/compiled.css'];
+    var jsSources = ['bower_components/jsoneditor/dist/jsoneditor.min.js','bower_components/jquery/dist/jquery.min.js','bower_components/bootstrap/dist/js/bootstrap.min.js','src/main/javascript/pipes.js','src/main/javascript/**/*.js'],
+        cssSources = ['bower_components/bootstrap/dist/css/bootstrap.min.css','bower_components/jsoneditor/dist/jsoneditor.min.css','target/classes/compiled.css'];
     var httpOptions = function(host,port, ext, user, pass) {
         return {
             url: 'http://' + host + ':' + port + '/etc/sling/pipes-client/dist/spc.' + ext + '/jcr:content',
@@ -65,7 +65,9 @@ module.exports = function(grunt) {
         copy: {
             main: {
                 files: [
-                    {expand: true, src: 'bower_components/jsoneditor/dist/img/*', flatten: true, dest: 'target/classes/dist/img/', filter: 'isFile'}
+                    {expand: true, src: 'bower_components/jsoneditor/dist/img/*', flatten: true, dest: 'target/classes/dist/img/', filter: 'isFile'},
+                    {expand: true, src: 'bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff', flatten: true, dest: 'target/classes/fonts/', filter: 'isFile'},
+                    {expand: true, src: 'bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff2', flatten: true, dest: 'target/classes/fonts/', filter: 'isFile'}
                 ]
             }
         },

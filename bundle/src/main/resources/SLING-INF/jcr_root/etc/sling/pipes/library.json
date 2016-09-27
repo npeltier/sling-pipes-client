@@ -1,4 +1,27 @@
 {
   "jcr:primaryType":"sling:Folder",
-  "sling:resourceType":"sling/pipes-client/history"
+  "sling:resourceType":"sling/pipes-client/history",
+  "searchreplace": {
+    "jcr:primaryType": "nt:unstructured",
+    "jcr:description": "This pipe uses 4 additional bindings, xpath <code>query<\/code> through which it fetches resources, <code>property<\/code> it inspects for each resource of the query, to finally replace each <code>old<\/code> by <code>new<\/code>",
+    "sling:resourceType": "slingPipes/container",
+    "conf": {
+      "jcr:primaryType": "sling:OrderedFolder",
+      "res": {
+        "jcr:primaryType": "nt:unstructured",
+        "expr": "${query}",
+        "jcr:description": "executes xpath <code>query<\/code>",
+        "sling:resourceType": "slingPipes/xpath"
+      },
+      "write": {
+        "jcr:primaryType": "nt:unstructured",
+        "jcr:description": "write <code>property<\/code>'s value, with <code>old<\/code> tokens replaced by <code>new<\/code>",
+        "sling:resourceType": "slingPipes/write",
+        "conf": {
+          "jcr:primaryType": "nt:unstructured",
+          "${property}": "${res[property].replace(/old/g,new)}"
+        }
+      }
+    }
+  }
 }

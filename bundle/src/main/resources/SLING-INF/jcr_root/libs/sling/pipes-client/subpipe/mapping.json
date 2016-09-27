@@ -6,6 +6,7 @@
     "pipeType":"slingPipes/base",
     "jcr:description":"Output resource is Input resource",
     "args":["path"],
+    "family":"read",
     "name":"Base"
   },
   "$":{
@@ -14,6 +15,7 @@
     "pipeType":"slingPipes/slingQuery",
     "jcr:description":"Output resources out of sling query execution of input.children(expr)",
     "name":"SlingQuery",
+    "family":"read",
     "args":["path","expr"]
   },
   "json": {
@@ -22,6 +24,7 @@
     "pipeType":"slingPipes/Json",
     "jcr:description":"Output binding is either expr json object, either each item of the json array. Output resource is 1 or N times the input resource",
     "args":["expr"],
+    "family":"control",
     "name":"Json"
   },
   "mp":{
@@ -30,6 +33,7 @@
     "pipeType":"slingPipes/multiProperty",
     "jcr:description":"Output binding is each value of the input's multi value property. Output resources is N times the input resource",
     "args":["path"],
+    "family":"read",
     "name":"Multiple Value Property"
   },
   "find":{
@@ -38,12 +42,14 @@
     "pipeType":"slingPipes/xpath",
     "jcr:description":"Output resources out of xpath query given as expression",
     "args":["expr"],
+    "family":"read",
     "name":"Xpath"
   },
   "auth":{
     "jcr:primaryType":"nt:unstructured",
     "sling:resourceType":"sling/pipes-client/mapping",
     "pipeType":"slingPipes/autorizable",
+    "family":"control",
     "jcr:description":"Outputs authorizable resource based on id of user in expression. Can add member and/or add members to the output bindings if resource is a group if resource is a group, add to a group if resource is a user",
     "name":"Autorizable"
   },
@@ -51,6 +57,7 @@
     "jcr:primaryType":"nt:unstructured",
     "sling:resourceType":"sling/pipes-client/mapping",
     "pipeType":"slingPipes/parent",
+    "family":"read",
     "jcr:description":"Outputs input's parent resource",
     "name":"Parent"
   },
@@ -60,6 +67,7 @@
     "pipeType":"slingPipes/filter",
     "jcr:description":"Ouptputs input if the filter conf matches the input. Result can be inverted with <strong>slingPipesFilter_not</strong> flag",
     "name":"Filter",
+    "family":"control",
     "args":"conf"
   },
   "container":{
@@ -67,6 +75,7 @@
     "sling:resourceType":"sling/pipes-client/mapping",
     "pipeType":"slingPipes/container",
     "jcr:description":"Container pipe, executes configured sub pipes",
+    "family":"control",
     "name":"Container"
   },
   "ref":{
@@ -74,6 +83,7 @@
     "sling:resourceType":"sling/pipes-client/mapping",
     "pipeType":"slingPipes/reference",
     "jcr:description":"Executes referred pipe in expression",
+    "family":"control",
     "name":"Reference",
     "args":"ref"
   },
@@ -83,6 +93,7 @@
     "jcr:description":"Cut the flow if referred pipe has an output, let it pass if it hasn't",
     "pipeType":"slingPipes/not",
     "name":"Not",
+    "family":"control",
     "args":"ref"
   },
   "write":{
@@ -91,6 +102,7 @@
     "jcr:description":"write configured resources under conf node",
     "pipeType":"slingPipes/write",
     "name":"Write",
+    "family":"write",
     "args":"conf"
   },
   "mv":{
@@ -98,6 +110,7 @@
     "sling:resourceType":"sling/pipes-client/mapping",
     "pipeType":"slingPipes/mv",
     "args":["path","expr"],
+    "family":"write",
     "name":"Move"
   },
   "rm":{
@@ -105,6 +118,7 @@
     "sling:resourceType":"sling/pipes-client/mapping",
     "pipeType":"slingPipes/rm",
     "name":"Remove",
+    "family":"write",
     "args":["path"]
   },
   "path":{
@@ -112,6 +126,7 @@
     "sling:resourceType":"sling/pipes-client/mapping",
     "pipeType":"slingPipes/path",
     "args":["expr"],
+    "family":"write",
     "name":"Path"
   }
 }

@@ -1,9 +1,9 @@
 <div class="pipesflow col-md-10">
     <div data-sly-use.pipe="org.apache.sling.pipes.client.ContainerPipeUse" class="pipescontainer">
-        <div data-sly-repeat.subpipe="${pipe.subpipes}" class="subpipe arrow row find">
-            <section class="col-md-10 details write" data-path="${subpipe.path}" data-sly-resource="${subpipe.path @ resourceType='sling/pipes-client/subpipe'}"></section>
-        </div>
-        <button class="glyphicon glyphicon-plus-sign plus" data-toggle="modal" data-target="#popup"></button>
+        <sly data-sly-repeat.subpipe="${pipe.subpipes}">
+            <sly data-path="${subpipe.path}" data-sly-resource="${subpipe.path @ resourceType='sling/pipes-client/subpipe'}"></sly>
+        </sly>
+        <button class="glyphicon glyphicon-plus-sign addSubpipe" data-toggle="modal" data-target="#popup"></button>
     </div>
 </div>
 <div class="modal fade" id="popup" tabindex="-1" role="dialog" aria-labelledby="Edit_subPipe">

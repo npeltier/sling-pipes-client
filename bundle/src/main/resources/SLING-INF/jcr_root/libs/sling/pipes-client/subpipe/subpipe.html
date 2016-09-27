@@ -1,21 +1,14 @@
-<div class="actions pull-right">&nbsp;
-    <a href="#"><span class="glyphicon glyphicon-minus-sign text-danger" aria-hidden="true">&nbsp;</span></a>
-    <a href="#">&nbsp;<span class="glyphicon glyphicon-arrow-down movedown" aria-hidden="true">&nbsp;</span></a>
-    <a href="#">&nbsp;<span class="glyphicon glyphicon-arrow-up moveup" aria-hidden="true">&nbsp;</span></a>
-    <a href="#">&nbsp;<span class="glyphicon glyphicon-pencil" aria-hidden="true">&nbsp;</span></a>
-    </span>
-</div>
-<h3 data-sly-use.mapping="org.apache.sling.pipes.client.MappingUse">
-    <span class="editName" contenteditable>${resource.name}</span>&nbsp;<small>${properties["sling:resourceType"]}</small>
-</h3>
-<div>
-    <span><strong>path:</strong></span>
-    <span contenteditable="true" class="edit" data-property="path" placeholder="Empty">${currentProperties.path}</span>
-</div>
-<div data-sly-test.jsonEditable="${mapping.jsonEditable}">
-    <button type="button" class="btn json-edit" data-path="${resource.path}/conf">Configuration</button>
-</div>
-<div data-sly-test="${!jsonEditable}">
-    <span><strong>expr:</strong></span>
-    <span contenteditable="true" class="edit" data-property="expr" placeholder="Empty">${properties.expr}</span>
+<div data-sly-use.mapping="org.apache.sling.pipes.client.MappingUse" class="subpipe arrow row ${mapping.family}" data-path="${resource.path}">
+    <section class="col-md-10 details">
+        <div class="actions pull-right">
+            <a href="#"><span class="glyphicon glyphicon-minus-sign text-danger" aria-hidden="true">&nbsp;</span></a>
+            <a href="#">&nbsp;<span class="glyphicon glyphicon-arrow-down movedown" aria-hidden="true">&nbsp;</span></a>
+            <a href="#">&nbsp;<span class="glyphicon glyphicon-arrow-up moveup" aria-hidden="true">&nbsp;</span></a>
+        </div>
+        <h3>
+            <span contenteditable data-edition="slingpipesclient_nodename">${resource.name}</span>&nbsp;<small>${properties["sling:resourceType"]}</small>
+        </h3>
+        <p contenteditable data-edition="jcr:description" class="center-block">${properties.jcr:description @ context='html'}</p>
+        <div class="json-view" data-json='${mapping.pipeTreeDump}'></div>
+    </section>
 </div>

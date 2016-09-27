@@ -1,5 +1,5 @@
 <template data-sly-template.selectpick="${@ id, clazz}">
-    <select  id="${id}" class="${ clazz }" data-sly-use.mapping="org.apache.sling.pipes.client.MappingUse" data-sly-list.option="${mapping.children}">
-        <sly data-sly-resource="${option.path}"></sly>
+    <select  id="${id}" class="${ clazz }" data-sly-use.mapping="org.apache.sling.pipes.client.MappingUse" data-sly-list.option="${mapping.childrenProperties}">
+        <option value="${option.pipeType}">${option.name}</option>
     </select>
 </template>
