@@ -1,6 +1,6 @@
 
-$('.edit').on('focusout',function(){
-    var path =$(this).parents(".subpipe").data("path"),
+$('[data-property]').on('focusout',function(){
+    var path = $(this).data("path") || $(this).parents(".subpipe").data("path"),
         property = $(this).data("property"),
         value = $(this).text(),
         data = {};
@@ -28,18 +28,6 @@ $('.editName').on('focusout',function(){
                 location.reload();
              }
     });
-});
-
-
-$('.typeInput').on('focusin',function(){
-    $(this).hide();
-    $(this).next().children().show();
-    $(this).next().children().focus();
-});
-
-$('.typeSelect').on('focusout',function(){
-    $(this).parent().prev().show();
-    $(this).hide();
 });
 
 $("select#inTypeSelect").on('change',function(){

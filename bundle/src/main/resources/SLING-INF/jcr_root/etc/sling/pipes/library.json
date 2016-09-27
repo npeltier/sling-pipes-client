@@ -23,5 +23,129 @@
         }
       }
     }
+  },
+  "githubissues": {
+    "jcr:primaryType": "nt:unstructured",
+    "jcr:description": "create one page per closed issue in github project",
+    "sling:resourceType": "slingPipes/container",
+    "conf": {
+      "jcr:primaryType": "sling:OrderedFolder",
+      "parent": {
+        "jcr:primaryType": "nt:unstructured",
+        "expr": "/content/geometrixx/en/issues",
+        "jcr:description": "need first to create the path of the parent",
+        "nodeType": "cq:Page",
+        "sling:resourceType": "slingPipes/path"
+      },
+      "parentcontent": {
+        "jcr:primaryType": "nt:unstructured",
+        "jcr:description": "then to create the content parent (we should enhance write pipe to be able to create the input resource if it doesn't exist)",
+        "sling:resourceType": "slingPipes/write",
+        "conf": {
+          "jcr:primaryType": "nt:unstructured",
+          "jcr:content": {
+            "jcr:primaryType": "cq:PageContent",
+            "subtitle": "what we do",
+            "jcr:title": "Products",
+            "cq:template": "/apps/geometrixx/templates/contentpage",
+            "cq:tags": ["marketing:interest/product"],
+            "sling:resourceType": "geometrixx/components/contentpage",
+            "par": {
+              "jcr:primaryType": "nt:unstructured",
+              "sling:resourceType": "foundation/components/parsys",
+              "flash": {
+                "jcr:primaryType": "nt:unstructured",
+                "fileReference": "/content/dam/geometrixx/movies/shape_summit.swf",
+                "sling:resourceType": "foundation/components/flash"
+              },
+              "list": {
+                "jcr:primaryType": "nt:unstructured",
+                "sling:resourceType": "geometrixx/components/list",
+                "listFrom": "children"
+              }
+            },
+            "rightpar": {
+              "jcr:primaryType": "nt:unstructured",
+              "sling:resourceType": "foundation/components/iparsys",
+              "iparsys_fake_par": {
+                "jcr:primaryType": "nt:unstructured",
+                "sling:resourceType": "foundation/components/iparsys/par"
+              },
+              "title": {
+                "jcr:primaryType": "nt:unstructured",
+                "sling:resourceType": "geometrixx/components/title"
+              },
+              "list": {
+                "jcr:primaryType": "nt:unstructured",
+                "displayAs": "linklist",
+                "sling:resourceType": "geometrixx/components/list",
+                "listFrom": "children"
+              }
+            },
+            "title": {
+              "jcr:primaryType": "nt:unstructured",
+              "jcr:lastModifiedBy": "admin",
+              "jcr:lastModified": "java.util.GregorianCalendar[time=1282749152961,areFieldsSet=true,areAllFieldsSet=true,lenient=false,zone=sun.util.calendar.ZoneInfo[id=\"GMT+02:00\",offset=7200000,dstSavings=0,useDaylight=false,transitions=0,lastRule=null],firstDayOfWeek=1,minimalDaysInFirstWeek=1,ERA=1,YEAR=2010,MONTH=7,WEEK_OF_YEAR=35,WEEK_OF_MONTH=4,DAY_OF_MONTH=25,DAY_OF_YEAR=237,DAY_OF_WEEK=4,DAY_OF_WEEK_IN_MONTH=4,AM_PM=1,HOUR=5,HOUR_OF_DAY=17,MINUTE=12,SECOND=32,MILLISECOND=961,ZONE_OFFSET=7200000,DST_OFFSET=0]",
+              "sling:resourceType": "geometrixx/components/title"
+            }
+          }
+        }
+      },
+      "issues": {
+        "jcr:primaryType": "nt:unstructured",
+        "expr": "https://api.github.com/repos/npeltier/sling-pipes-client/issues?state=closed",
+        "jcr:description": "gets all json data from the given URL, providing, an array: this should loop over each item of it and provide each time the output as <code>issue<\/code> binding",
+        "sling:resourceType": "slingPipes/json"
+      },
+      "issuePath": {
+        "jcr:primaryType": "nt:unstructured",
+        "expr": "/content/geometrixx/en/issues/${issues.opt(\"number\")}",
+        "nodeType": "cq:Page",
+        "sling:resourceType": "slingPipes/path"
+      },
+      "issueContent": {
+        "jcr:primaryType": "nt:unstructured",
+        "jcr:description": "finally write the page content",
+        "sling:resourceType": "slingPipes/write",
+        "conf": {
+          "jcr:primaryType": "nt:unstructured",
+          "jcr:content": {
+            "jcr:primaryType": "cq:PageContent",
+            "jcr:title": "${issues.opt(\"number\")}",
+            "cq:template": "/apps/geometrixx/templates/contentpage",
+            "cq:tags": ["marketing:interest/product"],
+            "sling:resourceType": "geometrixx/components/contentpage",
+            "par": {
+              "jcr:primaryType": "nt:unstructured",
+              "sling:resourceType": "foundation/components/parsys",
+              "title": {
+                "jcr:primaryType": "nt:unstructured",
+                "jcr:title": "${issues.opt(\"title\")}",
+                "type": "large",
+                "sling:resourceType": "geometrixx/components/title"
+              },
+              "list": {
+                "jcr:primaryType": "nt:unstructured",
+                "sling:resourceType": "geometrixx/components/list",
+                "listFrom": "children"
+              }
+            },
+            "rightpar": {
+              "jcr:primaryType": "nt:unstructured",
+              "sling:resourceType": "foundation/components/iparsys",
+              "iparsys_fake_par": {
+                "jcr:primaryType": "nt:unstructured",
+                "sling:resourceType": "foundation/components/iparsys/par"
+              }
+            },
+            "title": {
+              "jcr:primaryType": "nt:unstructured",
+              "jcr:title": "${issues.opt(\"title\")}",
+              "sling:resourceType": "geometrixx/components/title"
+            }
+          }
+        }
+      }
+    }
   }
 }

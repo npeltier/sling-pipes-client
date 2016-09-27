@@ -47,15 +47,15 @@ Pipes = {
         path = document.location.pathname;
         return path.substring(0, path.indexOf(".html"));
     },
-    importContent : function(parent, name, json, handler){
+    importContent : function(parent, name, json, handler, replaces){
         $.ajax({
-            url : parent,
+            url : parent + "/" + name,
             type :'post',
             data : {
                 ':operation':'import',
                 ':contentType':'json',
-                ':name':name,
-                ':replace':true,
+                //':name':name,
+                ':replace':replaces,
                 ':replaceProperties':true,
                 ':content':JSON.stringify(json)
             },
@@ -110,14 +110,6 @@ Pipes = {
 };
 
 $(document).ready(function(){
-    var sidebar=0;
     Pipes.execute(false);
-    $('#select').val('slingPipes/base');
-    $('.typeSelect').hide();
-    $( ".divselector" ).each(function() {
-        var value=$(this).prev().text();
-        $(this).children().val(value);
-    });
-    $.getJSON(Pipes.retrievePipePath() + ".json").then(Pipes.handleResults);
 });
 

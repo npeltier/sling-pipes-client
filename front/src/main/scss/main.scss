@@ -12,45 +12,34 @@ ul.nav.navbar-nav {
 main {
   margin-left: 1rem;
   margin-right: 1rem;
+  .total_list {
+    overflow-y: scroll;
+  }
+
+  #create {
+    border-radius:4px;
+  }
+
+  button.addSubpipe {
+    color: #449d44;
+    border-style: none;
+    background: none;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: 5rem;
+    width: 5rem;
+    font-size: 3rem;
+  }
+
+  #jsonedit-popup .modal-body, .jsoneditor-outer, .jsoneditor-tree {
+    min-height: 20rem;
+  }
+}
+
+.jsoneditor {
+  border: none !important;
 }
 
 @import 'detail';
 
-.panelbody {
-  text-align: center;
-}
-
-.total_list {
-  overflow-y: scroll;
-}
-
-.input-group {
-  width: 100%;
-  float: right;
-  padding-right: 1rem;
-  padding-bottom: 1rem;
-  padding-top: 1rem;
-}
-
-.input-group-btn {
-}
-
-[contenteditable=true]:empty:before {
-  content: attr(placeholder);
-}
-
-#create {
-  border-radius:4px;
-}
-
-button.addSubpipe {
-  color: #449d44;
-  border-style: none;
-  background: none;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  height: 5rem;
-  width: 5rem;
-  font-size: 3rem;
-}

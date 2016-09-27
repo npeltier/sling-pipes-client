@@ -1,11 +1,7 @@
 var POPUP_SEL = "#jsonedit-popup",
     editJSON = function(path, title, data){
     var container = $(POPUP_SEL + " .modal-body")[0],
-        options = {
-            "theme": "bootsrap3",
-            "input_height": "30rem"
-        },
-        editor = new JSONEditor(container, options),
+        editor = new JSONEditor(container),
         modal = $(POPUP_SEL),
         pathInfo = Pipes.extractPathInfo(path);
     $(POPUP_SEL + " .modal-title").text(title);
@@ -40,11 +36,22 @@ $('.json-edit').click(function(){
 
 $(document).ready(function(){
    $('.json-view').each(function(idx, elt){
-       var options = {
-           "theme": "bootsrap3",
-           "iconlib": "bootstrap3"
-       },
-       view = new JSONEditor(elt, options);
+       var saveButton = $(elt).parents(".subpipe").find(".save"),
+           view = new JSONEditor(elt, {
+               "onChange":function() {
+                   if (!saveButton.shown){
+                       saveButton.shown = true;
+                       saveButton.toggleClass("hide");
+                   }
+               }
+           });
        view.set(Pipes.removeProtectedProperties($(elt).data("json")));
+       saveButton.click(function(){
+           var subpipe = $(this).parents(".subpipe"),
+               pathInfo = Pipes.extractPathInfo(subpipe.data("path"));
+           Pipes.importContent(pathInfo.parent, pathInfo.name, view.get(), function(){
+               location.reload();
+           });
+       });
    });
 });

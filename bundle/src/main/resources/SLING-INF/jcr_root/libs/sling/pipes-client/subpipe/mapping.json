@@ -21,7 +21,7 @@
   "json": {
     "jcr:primaryType": "nt:unstructured",
     "sling:resourceType":"sling/pipes-client/mapping",
-    "pipeType":"slingPipes/Json",
+    "pipeType":"slingPipes/json",
     "jcr:description":"Output binding is either expr json object, either each item of the json array. Output resource is 1 or N times the input resource",
     "args":["expr"],
     "family":"control",

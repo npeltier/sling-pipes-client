@@ -12,7 +12,7 @@ web client for sling pipes
 - uses Bootstrap,
 - uses http://glyphicons.com/,
 - uses jQuery,
-- uses jsonEditor ,
+- uses jsonEditor (https://github.com/josdejong/jsoneditor) ,
 - and Apache Sling :-)
 
 please have a look at package.json for dev dependencies
