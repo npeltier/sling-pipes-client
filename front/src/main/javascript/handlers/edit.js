@@ -1,31 +1,17 @@
-
-$('[data-property]').on('focusout',function(){
-    var path = $(this).data("path") || $(this).parents(".subpipe").data("path"),
-        property = $(this).data("property"),
-        value = $(this).text(),
-        data = {};
-    data[property] = value;
-    $.ajax({
-         url: path,
-         type:'post',
-         data: data,
-         success: function(){
-           }
-    });
-});
-
 $('.editName').on('focusout',function(){
-    var path = $(this).parents(".subpipe").data("path"),
-    pathRepertory=path.substring(0,path.lastIndexOf("/")),
-    value=$(this).text();
+    var path = $(this).data("path") || $(this).parents(".subpipe").data("path"),
+        pathInfo = Pipes.extractPathInfo(path),
+        value = $(this).text();
+        newPath = pathInfo.parent +"/"+ value;
+        redirect = $(this).data("loadnew") === undefined ? location.href : newPath + ".html";
     $.ajax({
       url : path,
       type:'post',
       data: {':operation':'move',
              ':replace': 'true',
-             ':dest': pathRepertory +"/"+ value},
+             ':dest': newPath},
       success: function(){
-                location.reload();
+                location.href = redirect;
              }
     });
 });

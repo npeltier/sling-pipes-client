@@ -7,7 +7,7 @@
             <button type="button" class="btn btn-success hide save"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
         </div>
         <h3>
-            <span contenteditable data-edition="slingpipesclient_nodename">${resource.name}</span>&nbsp;<small>${properties["sling:resourceType"]}</small>
+            <span contenteditable class="editName">${resource.name}</span>&nbsp;<small>${properties["sling:resourceType"]}&nbsp;<a href="#" data-toggle="popover" title="Pipe doc" data-content="${mapping.description @ context='html'}"><span class="glyphicon glyphicon-question-sign"></span></a></small>
         </h3>
         <p contenteditable data-edition="jcr:description" class="center-block">${properties.jcr:description @ context='html'}</p>
         <div class="json-view" data-json='${mapping.pipeTreeDump}'></div>

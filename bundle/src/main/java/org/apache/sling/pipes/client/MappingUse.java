@@ -107,6 +107,10 @@ public class MappingUse extends AbstractUse {
         return getMapping().get(PN_FAMILY, "read");
     }
 
+    public String getDescription(){
+        return getMapping().get("jcr:description", "no documentation yet");
+    }
+
     public boolean isJsonEditable(){
         return getMapping() != null && getMapping().get(PN_ARGS, "").equals(BasePipe.NN_CONF);
     }

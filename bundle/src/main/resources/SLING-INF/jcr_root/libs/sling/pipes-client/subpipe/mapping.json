@@ -13,7 +13,7 @@
     "jcr:primaryType":"nt:unstructured",
     "sling:resourceType":"sling/pipes-client/mapping",
     "pipeType":"slingPipes/slingQuery",
-    "jcr:description":"Output resources out of sling query execution of input.children(expr)",
+    "jcr:description":"Output resources out of sling query execution of <code>input.children(expr)</code>",
     "name":"SlingQuery",
     "family":"read",
     "args":["path","expr"]
@@ -99,7 +99,7 @@
   "write":{
     "jcr:primaryType":"nt:unstructured",
     "sling:resourceType":"sling/pipes-client/mapping",
-    "jcr:description":"write configured resources under conf node",
+    "jcr:description":"write configured resources under conf node, following node hierarchies, node type, and properties. Enter <code>null</code> if you wish to remove a value",
     "pipeType":"slingPipes/write",
     "name":"Write",
     "family":"write",
@@ -109,6 +109,7 @@
     "jcr:primaryType":"nt:unstructured",
     "sling:resourceType":"sling/pipes-client/mapping",
     "pipeType":"slingPipes/mv",
+    "jcr:description":"moves input to path evaluated in expression",
     "args":["path","expr"],
     "family":"write",
     "name":"Move"
@@ -117,6 +118,7 @@
     "jcr:primaryType":"nt:unstructured",
     "sling:resourceType":"sling/pipes-client/mapping",
     "pipeType":"slingPipes/rm",
+    "jcr:description":"removes input",
     "name":"Remove",
     "family":"write",
     "args":["path"]
@@ -124,6 +126,7 @@
   "path":{
     "jcr:primaryType":"nt:unstructured",
     "sling:resourceType":"sling/pipes-client/mapping",
+    "jcr:description":"creates the path evaluated in expression, using <code>nodeType</code> as created node type",
     "pipeType":"slingPipes/path",
     "args":["expr"],
     "family":"write",

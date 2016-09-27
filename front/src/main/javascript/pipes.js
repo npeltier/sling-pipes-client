@@ -111,5 +111,6 @@ Pipes = {
 
 $(document).ready(function(){
     Pipes.execute(false);
+    $('[data-toggle="popover"]').popover();
 });
 

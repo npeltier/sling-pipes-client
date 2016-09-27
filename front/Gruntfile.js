@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-http');
-    var jsSources = ['bower_components/jsoneditor/dist/jsoneditor.min.js','bower_components/jquery/dist/jquery.min.js','bower_components/bootstrap/dist/js/bootstrap.min.js','src/main/javascript/pipes.js','src/main/javascript/**/*.js'],
+    var jsSources = ['bower_components/jsoneditor/dist/jsoneditor.min.js','bower_components/jquery/dist/jquery.min.js','bower_components/bootstrap/js/tooltip.js','bower_components/bootstrap/js/popover.js','bower_components/bootstrap/dist/js/bootstrap.min.js','src/main/javascript/pipes.js','src/main/javascript/**/*.js'],
         cssSources = ['bower_components/bootstrap/dist/css/bootstrap.min.css','bower_components/jsoneditor/dist/jsoneditor.min.css','target/classes/compiled.css'];
     var httpOptions = function(host,port, ext, user, pass) {
         return {

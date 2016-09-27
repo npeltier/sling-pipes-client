@@ -26,5 +26,6 @@ cd "$HOME"
 mvn clean install 
 cd bundle
 mvn sling:install -Dsling.url=http://$HOST:$PORT/system/console
-echo configuring extra granite library for cq deployments...
+echo will be configuring extra granite library for cq deployments in 5 seconds (avoiding conflicts with previous installation)...
+sleep 5
 curl -u $CRED -Fextrajs=/etc/clientlibs/granite/jquery/granite/csrf.js http://$HOST:$PORT/etc/sling/pipes-client

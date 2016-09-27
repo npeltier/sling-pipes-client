@@ -46,7 +46,7 @@
           "jcr:content": {
             "jcr:primaryType": "cq:PageContent",
             "subtitle": "what we do",
-            "jcr:title": "Products",
+            "jcr:title": "Issues",
             "cq:template": "/apps/geometrixx/templates/contentpage",
             "cq:tags": ["marketing:interest/product"],
             "sling:resourceType": "geometrixx/components/contentpage",
