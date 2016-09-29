@@ -70,7 +70,7 @@ var mapping = {
   });
 
   it("buildJson should convert a command into corresponding container pipe configuration",function(){
-    expect(Pipes.Creation.buildJson("$  /content/foo  cq:Page | rm",mapping)).toEqual({
+    expect(Pipes.Creation.buildJson("$    /content/foo  cq:Page | rm",mapping)).toEqual({
         "jcr:primaryType":"nt:unstructured",
         "sling:resourceType":"slingPipes/container",
         "conf":{
@@ -87,7 +87,7 @@ var mapping = {
             }
         }
     });
-    expect(Pipes.Creation.buildJson("$  /content/foo" ,mapping)).toEqual({
+    expect(Pipes.Creation.buildJson("$ /content/foo" ,mapping)).toEqual({
             "jcr:primaryType":"nt:unstructured",
             "sling:resourceType":"slingPipes/container",
             "conf":{
@@ -100,30 +100,65 @@ var mapping = {
             }
         });
   });
+    it("buildJson should only generate an object with created subpipe in case append flag is set",function(){
+        expect(Pipes.Creation.buildJson("$    /content/foo  cq:Page | rm",mapping, true)).toEqual({
+            "$":{
+                "jcr:primaryType":"nt:unstructured",
+                "sling:resourceType":"slingPipes/slingQuery",
+                "path":"/content/foo",
+                "expr":"cq:Page"
+            },
+            "rm":{
+                "jcr:primaryType":"nt:unstructured",
+                "sling:resourceType":"slingPipes/rm"
+            }
+        });
+        expect(Pipes.Creation.buildJson("$ /content/foo" ,mapping)).toEqual({
+            "jcr:primaryType":"nt:unstructured",
+            "sling:resourceType":"slingPipes/container",
+            "conf":{
+                "jcr:primaryType":"sling:OrderedFolder",
+                "$":{
+                    "jcr:primaryType":"nt:unstructured",
+                    "sling:resourceType":"slingPipes/slingQuery",
+                    "path":"/content/foo"
+                }
+            }
+        });
+    });
 
-   it("buildJson should build correctly $ | write pipe",function(){
-
-        expect(Pipes.Creation.buildJson("$ /content/foo cq:Page | write sling:resourceType=blah",mapping)).toEqual({
+   it("buildJson should correctly handled 'conf' based subpipes, with N key=value pairs",function(){
+        expect(Pipes.Creation.buildJson("write sling:resourceType=blah foo=bar",mapping)).toEqual({
           "jcr:primaryType":"nt:unstructured",
           "sling:resourceType":"slingPipes/container",
           "conf":{
               "jcr:primaryType":"sling:OrderedFolder",
-              "$":{
-                   "jcr:primaryType":"nt:unstructured",
-                   "sling:resourceType":"slingPipes/slingQuery",
-                   "path":"/content/foo",
-                   "expr":"cq:Page"
-              },
               "write":{
                    "jcr:primaryType":"nt:unstructured",
                    "sling:resourceType":"slingPipes/write",
                    "conf":{
                         "jcr:primaryType":"nt:unstructured",
-                        "sling:resourceType":"blah"
+                        "sling:resourceType":"blah",
+                        "foo":"bar"
                    }
               }
           }
       });
+       expect(Pipes.Creation.buildJson("write sling:resourceType=blah",mapping)).toEqual({
+           "jcr:primaryType":"nt:unstructured",
+           "sling:resourceType":"slingPipes/container",
+           "conf":{
+               "jcr:primaryType":"sling:OrderedFolder",
+               "write":{
+                   "jcr:primaryType":"nt:unstructured",
+                   "sling:resourceType":"slingPipes/write",
+                   "conf":{
+                       "jcr:primaryType":"nt:unstructured",
+                       "sling:resourceType":"blah"
+                   }
+               }
+           }
+       });
    });
 
    it("path argument should be handled depending on the pipe context",function(){

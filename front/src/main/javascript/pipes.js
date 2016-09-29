@@ -1,7 +1,7 @@
 Pipes = {
     execute: function(forReal){
         $.ajax({
-            url: Pipes.retrievePipePath() + ".json",
+            url: Pipes.getCurrentPipePath() + ".json",
             type:'post',
             data:{
                 dryRun:!forReal
@@ -43,7 +43,7 @@ Pipes = {
             table.append(body);
         }
     },
-    retrievePipePath : function() {
+    getCurrentPipePath : function() {
         path = document.location.pathname;
         return path.substring(0, path.indexOf(".html"));
     },
@@ -97,7 +97,7 @@ Pipes = {
      * @param pipe
      */
     getSubpipePath : function(subpipe){
-        return $(subpipe).children(".details").data("path");
+        return $(subpipe).data("path");
     },
     /**
      * get name from path
@@ -106,6 +106,13 @@ Pipes = {
      */
     getNameFromPath : function(path){
         return path.substring(path.lastIndexOf("/")+1);
+    },
+    /**
+     * returns mapping between token expressions and jcr structures
+     * @returns {*|jQuery}
+     */
+    getMapping : function(){
+        return $("body").data("mapping");
     }
 };
 

@@ -1,9 +1,9 @@
 $('.editName').on('focusout',function(){
     var path = $(this).data("path") || $(this).parents(".subpipe").data("path"),
         pathInfo = Pipes.extractPathInfo(path),
-        value = $(this).text();
-        newPath = pathInfo.parent +"/"+ value;
-        redirect = $(this).data("loadnew") === undefined ? location.href : newPath + ".html";
+        value = $(this).text(),
+        newPath = pathInfo.parent +"/"+ value,
+        redirect = $(this).data("loadnew") === undefined ? location.href : newPath + ".html";
     $.ajax({
       url : path,
       type:'post',
@@ -33,12 +33,12 @@ $("select#inTypeSelect").on('change',function(){
 });
 
 var getCurrentPipePath = function(elt){
-    return Pipes.getSubpipePath($(elt).parent(".subpipe"));
+    return Pipes.getSubpipePath($(elt).parents(".subpipe"));
 };
 
 $('.moveup').click(function(){
     var current = getCurrentPipePath(this),
-        prev = Pipes.getSubpipePath($(this).parent(".subpipe").prev()),
+        prev = Pipes.getSubpipePath($(this).parents(".subpipe").prev()),
         prevName = Pipes.getNameFromPath(prev);
     $.ajax({
         url: current,
@@ -52,7 +52,7 @@ $('.moveup').click(function(){
 
 $('.movedown').click(function(){
     var current = getCurrentPipePath(this),
-        next = Pipes.getSubpipePath($(this).parent(".subpipe").next()),
+        next = Pipes.getSubpipePath($(this).parents(".subpipe").next()),
         nextName= Pipes.getNameFromPath(next);
     $.ajax({
         url: current,
@@ -79,7 +79,7 @@ $('.saveSubPipe').click (function(){
 });
 
 $('.remove').click(function(){
-    var current=$(this).next().data("path");
+    var current = getCurrentPipePath(this);
     $.ajax({
         url:current,
         type:'post',

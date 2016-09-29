@@ -6,7 +6,7 @@
         <button class="glyphicon glyphicon-plus-sign addSubpipe" data-toggle="modal" data-target="#popup"></button>
     </div>
 </div>
-<div class="modal fade" id="popup" tabindex="-1" role="dialog" aria-labelledby="Edit_subPipe">
+<div class="modal fade" id="popup" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -18,7 +18,7 @@
                     <label  class="col-sm-2 control-label" for="inputName">Name</label>
                     <input id="inputName" type="name" class="form-control" placeholder="Edit Name"/>
                     <label for="typeselect">Type :</label>
-                    <div data-sly-use.select="select.html" data-sly-call="${select.selectpick @ id='typeselect' ,clazz='selectpicker'}"></div>
+                    <div data-sly-use.select="select.html" data-sly-call="${select.selectpick @ id='typeselect', clazz='selectpicker'}"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

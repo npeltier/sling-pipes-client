@@ -1,23 +1,23 @@
 Pipes.Creation = {
     /**
-     *build a Json object relative to the input,using the mapping, Pipes.Creation.parseCommand and Pipes.Creation.parseSubCommand
-     **/
-    "buildJson" : function(input,mapping) {
-        var subCommands=Pipes.Creation.parseCommand(input),
-            add = {},
-            subpipe = {},
-            container = {
-                "jcr:primaryType":"nt:unstructured",
-                "sling:resourceType":"slingPipes/container",
-                "conf":{"jcr:primaryType":"sling:OrderedFolder"}
-            };
+     * build a Json structure relative to the input, using the mapping. If append is true, an array of commands will
+     * be returned, otherwise, the full container object containing subpipes is returned.
+     * @param input
+     * @param mapping
+     * @param append
+     * @returns {container} or {pipes to append} depending on append flag
+     */
+    "buildJson" : function(input, mapping, append) {
+        var subCommands = Pipes.Creation.parseCommand(input);
+            conf = {};
         $.each(subCommands,function(index){
-            subpipeName = subCommands[index].split(/[\s]* /gi)[0];
-            subpipe[subpipeName] = Pipes.Creation.parseSubCommand(subCommands[index],mapping,index===0);
-            $.extend(add, subpipe);
+            conf[subCommands[index].split(/[\s]* /gi)[0]] = Pipes.Creation.parseSubCommand(subCommands[index], mapping, index === 0);
         });
-        $.extend(container.conf, add);
-        return container;
+        return append ? conf : {
+            "jcr:primaryType":"nt:unstructured",
+            "sling:resourceType":"slingPipes/container",
+            "conf": $.extend({"jcr:primaryType":"sling:OrderedFolder"}, conf)
+        };
     },
     /**
      * parse a piped command and return a list of subpipes
@@ -30,7 +30,7 @@ Pipes.Creation = {
     /**
      * parse a subCommands previously parsed with Pipes.Creation.parseCommand and return a Json Object relative to
      **/
-    "parseSubCommand" : function (subCommands,mapping,firstCommand){
+    "parseSubCommand" : function (subCommands, mapping, firstCommand){
         var tokens = subCommands.split(/[\s]* /gi),
             sub = tokens[0],
             args = tokens.slice(1),
@@ -70,15 +70,22 @@ Pipes.Creation = {
     }
 };
 
-$('.create').click(function(){
-    var date = new Date(),
-        mapping = $("#inputFieldCreation").data("mapping"),
-        today = date.getFullYear()+'-'+('0'+(date.getMonth()+1)).slice(-2)+'-'+('0'+date.getDate()).slice(-2)+'_'+('0'+date.getHours()).slice(-2)+'-'+('0'+date.getMinutes()).slice(-2),
-        input = $('#inputFieldCreation').val(),
-        data = Pipes.Creation.buildJson(input,mapping),
-        parent = "/etc/sling/pipes/history/"+date.getFullYear()+'/'+('0'+(date.getMonth()+1)).slice(-2);
-    Pipes.importContent(parent, today, data, function(){
-        document.location.href = parent + "/" + today + ".html";
-    });
+$('.postpipes').click(function(){
+    var input = $('#pipedExpression').val(),
+        append = $(this).data("append"),
+        data = Pipes.Creation.buildJson(input, Pipes.getMapping(), append);
+    if (append){
+        var confFolder = getCurrentPipePath() + "/conf";
+        $.each(data, function(name, conf){
+            Pipes.importContent(confFolder, key, conf);
+        });
+    } else {
+        var date = new Date(),
+            today = date.getFullYear()+'-'+('0'+(date.getMonth()+1)).slice(-2)+'-'+('0'+date.getDate()).slice(-2)+'_'+('0'+date.getHours()).slice(-2)+'-'+('0'+date.getMinutes()).slice(-2),
+            parent = "/etc/sling/pipes/history/" + date.getFullYear() + '/' + ('0'+(date.getMonth()+1)).slice(-2);
+        Pipes.importContent(parent, today, data, function(){
+            document.location.href = parent + "/" + today + ".html";
+        });
+    }
 });
 
