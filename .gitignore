@@ -9,6 +9,7 @@ front/node
 .viminfo
 *.log
 *.iml
+.lesshst
 .DS_Store
 _SpecRunner.html
 front/.grunt/
