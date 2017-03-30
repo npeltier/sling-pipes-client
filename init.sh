@@ -13,11 +13,11 @@ HOME=`pwd`
 TMP="$HOME/tmp_init"
 mkdir "$TMP"
 cd "$TMP"
-svn co http://svn.apache.org/repos/asf/sling/trunk/contrib/extensions/sling-query sling-query
+svn co https://svn.apache.org/repos/asf/sling/trunk/contrib/extensions/sling-query sling-query
 cd "sling-query"
 mvn clean install sling:install -Dsling.url=http://$HOST:$PORT/system/console
 cd "$TMP"
-svn co http://svn.apache.org/repos/asf/sling/trunk/contrib/extensions/sling-pipes sling-pipes
+svn co https://svn.apache.org/repos/asf/sling/trunk/contrib/extensions/sling-pipes sling-pipes
 cd "sling-pipes"
 mvn clean install sling:install -Dsling.url=http://$HOST:$PORT/system/console
 echo clean up temporary folder
@@ -28,4 +28,4 @@ cd bundle
 mvn sling:install -Dsling.url=http://$HOST:$PORT/system/console
 echo "will be configuring extra granite library for cq deployments in 5 seconds (avoiding conflicts with previous installation)..."
 sleep 5
-curl -u $CRED -Fextrajs=/etc/clientlibs/granite/jquery/granite/csrf.js http://$HOST:$PORT/etc/sling/pipes-client
+curl -u $CRED -Fextrajs=/libs/clientlibs/granite/jquery/granite/csrf http://$HOST:$PORT/etc/sling/pipes-client
